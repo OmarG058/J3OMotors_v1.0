@@ -1,0 +1,147 @@
+/*navegacion de iconos*/
+
+@media (min-width: 1000px) {
+    /*navegacion de iconos*/
+    .nav-icon{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+    }
+    
+}
+
+
+.container {
+    
+    text-align: center;
+}
+
+.container div {
+    margin-bottom: 2rem;
+}
+
+
+.container a{
+    text-decoration: none;
+    padding-right: 2rem;
+    font-family: var(--Textosecundario);
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: 400;
+    color: black;
+    margin-left: 1.5rem;
+  
+    position: relative;
+}
+
+.container a:hover{
+    color: rgb(205, 152, 52) /*este color solo se usa aqui*/
+}
+
+.container a:hover::after{
+    width: 100%;
+}
+
+.container a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -.3rem; /* Ubicación justo debajo del texto */
+    width: 0; /* Empieza invisible */
+    height: .2rem; /* Grosor de la línea */
+    background-color:var(--secundario);
+    transition: width 0.3s ease; /* Animación suave */
+}
+
+.container-icon a {
+    display: flex;
+    flex-direction: column; /* Establece la dirección del contenido en columna (vertical) */
+    align-items: center; /* Centra los elementos horizontalmente */
+    text-align: center; /* Asegura que el texto también esté centrado */
+    text-decoration: none;
+    border: none;
+}
+
+.container-icon p {
+    font-size:2rem;
+    color: black;
+}
+
+
+.container-icon svg {
+    margin-bottom: 10px;     /* Agrega espacio entre el icono y el texto */
+    margin-top: 10px;
+}
+
+/*layout grid menu principal*/
+
+.principal {
+    padding: 2rem;
+}
+
+@media (min-width: 1000px) {
+    .contenedor-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual ancho */
+        gap: 4rem; /* Espaciado entre los elementos */
+        width: 95%;
+        margin: 0 auto;
+    }
+    
+}
+
+.contenedor-items {
+    text-align: center; /* Centra el contenido dentro de cada item */
+    border: 1px solid var(--primario);   
+    overflow: hidden; /* Recorta el contenido que se sale del contenedor */
+    padding: 1rem;
+    margin-bottom: 5rem;
+}
+
+.contenedor-items p::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.3rem;
+    width: 0;
+    height: 0.3rem;
+    background-color: var(--secundario); /* Cambia el color según tu diseño */
+    transition: width 0.3s ease;
+}
+
+.contenedor-items:hover p::after {
+    width: 100%; /* La línea se expande al 100% cuando pasas sobre el contenedor */
+}
+
+.contenedor-items img {
+    width: 100%; /* Asegura que las imágenes ocupen todo el ancho del contenedor */
+    height: 25rem; /* estan en pixeles porque la imagenes originales tienen tamaños distintos y esto asegura una altura comun entre ellos*/
+    padding-top: 3rem;
+   
+}
+
+.contenedor-items h3 {
+    font-size: 1.9rem;
+    margin: 1rem 0 0.5rem;
+    font-weight: 400;
+    font-family: var(--Textosecundario);
+    padding-top: 3rem;
+    color: var(--negro);
+}
+
+.contenedor-items p {
+    font-size: 1.9rem;
+    color: black;
+    font-family: var(--Textosecundario);
+    text-align: justify;
+    font-weight: 200;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    position: relative;
+}
+
+

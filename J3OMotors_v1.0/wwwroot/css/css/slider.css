@@ -1,0 +1,55 @@
+/*slider*/
+.slider {
+    width: 100%; /* Ajusta el ancho del slider */
+    overflow: hidden;
+    position: relative;
+    margin-top: 127.99px;
+  
+}
+
+.slider--inner{
+    display: flex;
+    transition: transform 0.3s ease-in;/*para hacer que la transicion sea mas suave*/
+    /* Ajusta este valor al número de imágenes */
+  
+}
+
+@media (min-width: 900px) {
+   .slider--inner{
+        display: flex;
+        transition: transform 0.3s ease-in;/*para hacer que la transicion sea mas suave*/
+        /* Ajusta este valor al número de imágenes */
+        height: 550px;
+   }
+    
+}
+
+.slider--inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* Hace que las imágenes se adapten sin distorsión */
+    flex-shrink: 0;
+}
+
+/*boton para cambiar manualmete el slider*/
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.slider-btn.prev {
+    left: 10px;
+}
+
+.slider-btn.next {
+    right: 10px;
+}

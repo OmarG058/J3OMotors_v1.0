@@ -1,0 +1,244 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    var correo = HttpContextAccessor.HttpContext.Session.GetString("Email");
+    var tipoUsuario = HttpContextAccessor.HttpContext.Session.GetInt32("TipoUsuario");
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - J3OMotors_v1._0</title>
+
+    <link rel="stylesheet" href="../css/cssNoticias/styleNoticias.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Krub:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Krub:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+
+
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/J3OMotors_v1._0.styles.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="~/css/css/slider.css">
+    <link rel="stylesheet" href="~/css/css/borderbox.css">
+    <link rel="stylesheet" href="~/css/css/Colores.css">
+    <link rel="stylesheet" href="~/css/css/Buttons.css">
+    <link rel="stylesheet" href="~/css/css/cssNoticias/styleNoticias.css">
+
+    
+    <link rel="stylesheet" href="~/css/css/Fonts.css">
+    <link rel="stylesheet" href="~/css/css/StyleHeader.css">
+    <link rel="stylesheet" href="~/css/css/SyleFooter.css">
+</head>
+<body>
+
+
+    <header class="sticky-top bg-dark shadow">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center py-2">
+                <!-- Logo -->
+                <a asp-action="Index" asp-controller="Home" class="d-flex align-items-center text-white text-decoration-none">
+                    <img src="~/img/Logo-mejor.png" alt="Logo" width="70" height="70" class="me-2" />
+                    <span class="fs-4">J30Motors</span>
+                </a>
+
+                <!-- Menú escritorio -->
+                <nav class="d-none d-lg-flex align-items-center gap-4">
+                    <div class="opcion">
+                        <a class="text-white text-decoration-none" asp-action="Index" asp-controller="Home">Inicio</a>
+                        <a class="text-white text-decoration-none" href="#">Vehículos</a>
+                        <a class="text-white text-decoration-none" href="#">Cotiza</a>
+                        <a class="text-white text-decoration-none" asp-action="Index" asp-controller="Nosotros">Nosotros</a>
+                    </div>
+
+                    @* Mostrar login si no hay sesión *@
+                    @if (string.IsNullOrEmpty(correo))
+                    {
+                        <div class="opcion">
+                            <a class="text-white text-decoration-none" asp-action="Index" asp-controller="Login">SignUp or Login</a>
+                        </div>
+                    }
+                    else
+                    {
+                        if (tipoUsuario == 1)
+                        {
+                            <div class="opcion">
+
+                                <a style="margin-right:20px;" class="text-white text-decoration-none" asp-controller="" asp-action="">Administrador</a>
+                                <a style="margin-right:20px;" class="text-white text-decoration-none" asp-controller="Login" asp-action="CerrarSesion">Cerrar sesión</a>
+                            </div>
+                        }
+                        else if (tipoUsuario == 2)
+                        {
+                            <div class="opcion">
+
+                                <a style="margin-right:20px;" class="text-white text-decoration-none" asp-controller="Perfil" asp-action="Index">Mi perfil</a>
+
+                                <a style="margin-right:20px;" class="text-white text-decoration-none" asp-controller="Login" asp-action="CerrarSesion">Cerrar sesión</a>
+                            </div>
+                        }
+                    }
+                </nav>
+
+                <!-- Botón menú móvil -->
+                <button class="btn btn-outline-light d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuMobile" aria-controls="menuMobile">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú móvil -->
+        <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="menuMobile" aria-labelledby="menuMobileLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="menuMobileLabel">Menú</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+            </div>
+            <div class="offcanvas-body d-flex flex-column gap-3">
+                <a class="text-white text-decoration-none" asp-action="Index" asp-controller="Home">Inicio</a>
+                <a class="text-white text-decoration-none" href="#">Vehículos</a>
+                <a class="text-white text-decoration-none" href="../html/Cotizacion.html">Cotiza</a>
+                <a class="text-white text-decoration-none" href="../html/Nosotros.html">Nosotros</a>
+
+                @if (string.IsNullOrEmpty(correo))
+                {
+                    <a class="text-white text-decoration-none" asp-action="Index" asp-controller="Login">SignUp / Login</a>
+                }
+                else if (tipoUsuario == 1)
+                {
+                    <span class="text-white">@correo</span>
+                    <a class="text-white text-decoration-none" asp-controller="" asp-action="">Administrador</a>
+                    <a class="text-white text-decoration-none" asp-controller="Login" asp-action="CerrarSesion">Cerrar sesión</a>
+                }
+                else if (tipoUsuario == 2)
+                {
+                    <span class="text-white">@correo</span>
+                    <a class="text-white text-decoration-none" asp-controller="Perfil" asp-action="Index">Mi perfil</a>
+                    <a class="text-white text-decoration-none" asp-controller="Login" asp-action="CerrarSesion">Cerrar sesión</a>
+                }
+            </div>
+        </div>
+    </header>
+
+    <div class="">
+        <main role="main" class="">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer">
+
+        <div class="contacatanos">
+            <h4>Contactanos</h4>
+
+            <a href="#">Atencion al Cliente.</a>
+            <a href="#">Contactanos</a>
+            <a href="#">WhatsApp</a>
+
+        </div>
+
+        <div class="compras">
+            <h4>Compras</h4>
+            <a href="#">Solicita Cotizacion</a>
+            <a href="#">Promociones</a>
+            <a href="#">Personaliza</a>
+        </div>
+
+        <div class="legales">
+            <h4>legales</h4>
+            <a href="#">Aviso de provacidad.</a>
+            <a href="#">Legales</a>
+            <a href="#">Terminos y condiciones</a>
+        </div>
+
+        <div class="Social">
+
+
+            <h4>Social</h4>
+
+
+            <a class="" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="24"
+                     height="24"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="var(--primario)"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+                </svg>
+            </a>
+
+            <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="24"
+                     height="24"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="var(--primario)"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z" />
+                    <path d="M10 9l5 3l-5 3z" />
+                </svg>
+            </a>
+            <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="24"
+                     height="24"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="var(--primario)"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+                    <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+                </svg>
+            </a>
+
+            <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="24"
+                     height="24"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="var(--primario)"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
+                    <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                    <path d="M16.5 7.5l0 .01" />
+                </svg>
+            </a>
+
+            <h3>Todos los Derechos Reservados</h3>
+        </div>
+
+
+    </footer>
+
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/js/slider.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

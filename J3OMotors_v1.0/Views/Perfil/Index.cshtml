@@ -1,0 +1,42 @@
+﻿@model J3OMotors_v1._0.Models.Perfil.PerfilViewModel
+
+<section style="margin-top: 50px;">
+    <div class="container ">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5">
+
+                        <h2 class="fw-bold text-uppercase text-center mb-4">Mi Perfil</h2>
+
+                        <!-- Datos de Usuario -->
+                        <div class="card mb-4 " style="background-color: rgba(255,255,255,0.05); border-radius: 0.5rem;">
+                            <div class="card-body fs-2">
+                                <h5 class="mb-3 text-white-50">Datos de Usuario</h5>
+                                <p><strong>Correo:</strong> @Model.Usuario.correo</p>
+                            </div>
+                        </div>
+
+                        <!-- Datos de Cliente -->
+                        <div class="card" style="background-color: rgba(255,255,255,0.05); border-radius: 0.5rem;">
+                            <div class="card-body fs-2">
+                                <h5 class="mb-3 text-white-50">Datos de Cliente</h5>
+                                <p><strong>Nombre:</strong> @Model.Cliente.Nombre @Model.Cliente.Apellidos</p>
+                                <p><strong>Teléfono:</strong> @Model.Cliente.Telefono</p>
+                                <p><strong>CURP:</strong> @Model.Cliente.Curp</p>
+                                <p><strong>RFC:</strong> @Model.Cliente.Rfc</p>
+                                <p><strong>Dirección:</strong> @Model.Cliente.Calle, @Model.Cliente.Colonia, @Model.Cliente.Ciudad, @Model.Cliente.Estado</p>
+                                <p><strong>Código Postal:</strong> @Model.Cliente.CodigoPostal</p>
+
+                                <div class="text-center mt-4">
+                                    <a href="@Url.Action("Edit", "Clientes", new { id = Model.Cliente.IdCliente })" class="btn btn-light px-4">Editar mis datos</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,81 @@
+﻿@model J3OMotors_v1._0.Models.Cliente.ClienteViewModel
+
+@{
+    ViewData["Title"] = "Completar Datos del Cliente";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post">
+    <input type="hidden" asp-for="IdUsuario" />
+
+    <div class="form-group">
+        <label asp-for="Nombre"></label>
+        <input asp-for="Nombre" class="form-control" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Apellidos"></label>
+        <input asp-for="Apellidos" class="form-control" />
+        <span asp-validation-for="Apellidos" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Telefono"></label>
+        <input asp-for="Telefono" class="form-control" />
+        <span asp-validation-for="Telefono" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Curp"></label>
+        <input asp-for="Curp" class="form-control" />
+        <span asp-validation-for="Curp" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Rfc"></label>
+        <input asp-for="Rfc" class="form-control" />
+        <span asp-validation-for="Rfc" class="text-danger"></span>
+    </div>
+
+    <h4>Dirección</h4>
+
+    <div class="form-group">
+        <label asp-for="Calle"></label>
+        <input asp-for="Calle" class="form-control" />
+        <span asp-validation-for="Calle" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Colonia"></label>
+        <input asp-for="Colonia" class="form-control" />
+        <span asp-validation-for="Colonia" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Ciudad"></label>
+        <input asp-for="Ciudad" class="form-control" />
+        <span asp-validation-for="Ciudad" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Estado"></label>
+        <input asp-for="Estado" class="form-control" />
+        <span asp-validation-for="Estado" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CodigoPostal"></label>
+        <input asp-for="CodigoPostal" class="form-control" />
+        <span asp-validation-for="CodigoPostal" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

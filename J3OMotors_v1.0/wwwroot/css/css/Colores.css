@@ -1,0 +1,11 @@
+:root {
+    --blanco: #ffffff;
+    --negro: rgb(0,0,0);
+    --primario: rgb(242, 242, 242);
+    --secundario:rgb(254, 205, 8);
+    --secundario2: rgb(205, 152, 52);
+
+    --compraButton: rgb(21,115,71);
+    --cotizaButton: rgb(11,94,215);
+    --infoButton: rgb(49,210,242);
+}

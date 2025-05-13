@@ -1,0 +1,190 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Asegura que ocupen toda la altura de la ventana */
+    
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Asegura que ocupen toda la altura de la ventana */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--Textosecundario);
+}
+
+p{
+    font-size: 2.4rem;
+    color: var(--negro);
+    font-family: var(--Textosecundario);
+    text-align: justify;
+    font-weight: 200;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+}
+
+
+.Container-fondo-img {
+    width: 100%;
+    margin-top: 127.99px
+     
+}
+
+.Container-fondo-img .container-items{
+    width: 100%;
+    position: relative;
+  
+}
+
+.container-img{
+    display: flex;
+    align-items: start;
+    color: var(--blanco);
+    
+}
+
+.container-items img {
+    width: 100%;
+    height: 100%;
+   
+   
+}
+
+.container-items h1 {
+    position: absolute;
+    padding: 8rem;
+    font-size: 6rem;
+}
+
+
+.CajaP{
+    width: 90%;
+    margin: 0 auto;  
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+@media (min-width:768px) {
+    .CajaP{
+        width: 90%;
+        margin: 0 auto;  
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+}
+
+
+.contendor-presentacion{
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+}
+
+.presentacion{
+    width: 70%;
+    align-items: center;
+    text-align: justify;
+}
+
+.presentacion h3{
+    font-weight: 500;
+    color: var(--negro);
+}
+
+.contenedor-items img {
+    border-radius: 10px;
+}
+
+.Contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.contenedor-items{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 5rem;
+    justify-content: space-evenly;
+    margin-bottom: 5rem;
+    width: 100%;
+}
+
+.contenedor-items img{
+    width: 100%;
+    height: auto;
+}
+
+
+.contenedor-texto{
+    width: 50%;
+    
+
+}
+
+.contenedor-texto h3{
+    font-weight: 500;
+    color: var(--negro);
+}
+button{
+    height: 50px;
+    width: 400px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;  /* Le da un aspecto de mano cuando se pone el cursos encima */
+}
+
+
+
+@media screen and (max-width: 700px) {
+     .Division, .navbar,.footer,.ImagenAcomodar,.footervar, .CajaP, .seccion, .side {   
+    flex-direction: column;
+}
+}
+
+.texto-slide{
+    margin-left: 5.5rem;
+    font-weight: 500;
+    color: var(--negro);
+}
+
+.slider {
+    display: flex;
+    width: 90%; /* Ancho fijo del deslizador */
+    height: 50rem; /* Alto fijo del deslizador */
+    overflow: hidden; /* Ocultar contenido desbordado */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(212, 192, 192, 0.2);
+    margin: 0 auto;
+    transition: transform 0.3s ease-in;
+    
+}
+
+.slides {
+    display: flex; /* Mostrar imágenes en fila */
+    width: 400%; /* 4 imágenes = 400% del ancho del contenedor */
+    animation: slide 10s infinite; /* Animación de 8 segundos */
+}
+
+.slides img {
+    width: 100%;
+    height: auto;
+    object-fit: fill; /* Hace que las imágenes se adapten */
+    flex-shrink: 0;
+}
+
+@keyframes slide {
+    0%, 25% { transform: translateX(0); } /* Primera imagen */
+    25%, 50% { transform: translateX(-100%); } /* Segunda imagen */
+    50%, 75% { transform: translateX(-200%); } /* Tercera imagen */
+    75%, 100% { transform: translateX(-300%); } /* Cuarta imagen */
+}

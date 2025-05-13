@@ -1,0 +1,12 @@
+html{
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+    /*poner este codigo a todos mis programas ya que lo adpta mejor a todas las pantallas*/ 
+body{
+    font-size: 16px;
+   
+}
