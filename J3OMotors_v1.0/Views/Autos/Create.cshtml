@@ -1,0 +1,32 @@
+﻿@model J3OMotors_v1._0.Models.Autos.AutosViewModel
+
+<h2>Crear Auto</h2>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div>
+        <label>Modelo:</label>
+        <input asp-for="Modelo" class="form-control" />
+    </div>
+    <div>
+        <label>Fecha del Modelo:</label>
+        <input asp-for="FechaModelo"  class="form-control" />
+    </div>
+    <div>
+        <label>Costo:</label>
+        <input asp-for="Costo" class="form-control" />
+    </div>
+    <div>
+        <label>Fabricante:</label>
+        <input asp-for="Fabricante" class="form-control" />
+    </div>
+    <div>
+        <label>Número de Serie:</label>
+        <input asp-for="NumeroSerie" class="form-control" />
+    </div>
+    <div>
+        <label>Imagen:</label>
+        <input type="file" name="archivo" class="form-control" />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
