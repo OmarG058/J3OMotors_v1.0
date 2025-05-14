@@ -94,6 +94,8 @@ namespace J3OMotors_v1._0.Controllers
             // Manejar errores
             return View(new List<AutosViewModel>());
         }
+        //para hacer el metodo de edit ocupo un get para mostrar el formulario y un post que hace los cambios (el put solo es para la api)
+        // get solo para mostrar cuando presiono un boton, y el post para yo como usuario enviar algo 
 
     }
 }
