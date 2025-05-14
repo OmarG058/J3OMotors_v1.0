@@ -1,6 +1,61 @@
-﻿@model List<J3OMotors_v1._0.Models.Autos.AutosViewModel>    
+﻿@model List<J3OMotors_v1._0.Models.Autos.AutosViewModel>
 
 @{
-    ViewData["Title"] = "Listado de Autos";
+    ViewData["Title"] = "";
 }
 
+
+<main>
+        <div style="margin:0;" class="slider">
+            <div class="slider--inner">
+
+                <img src="" alt="">
+                <img src="" alt="">
+                <img src="" alt="">
+                <img src="" alt="">
+                <img src="" alt="">
+
+            </div>
+                <button class="slider-btn prev">❮</button>
+                <button class="slider-btn next">❯</button>
+        </div>
+        <div class="col-md-12">
+                <br />
+                <h1 class="text-center">TODA NUESTRA GAMA DE VEHICULOS</h1>
+                <br />
+                <hr>
+                <br/>  
+        </div>
+   
+        
+        <div class="">
+            <h2>@ViewData["Title"]</h2>
+            <div class="row">
+       
+                @foreach (var auto in Model)
+                {
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5 class="card-title">
+                                    <img src="@auto.RutaImagen" alt="Imagen de @auto.Modelo" class="img-fluid" />
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    Modelo: @auto.Modelo<br />
+                                    Fabricante: @auto.Fabricante<br />
+                                    Año: @auto.FechaModelo<br />
+                                    Precio: @auto.Costo<br />
+                                </p>
+                                <a href="#" class="btn btn-primary btn-dark btn-lg">Cotizar</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+
+</main>

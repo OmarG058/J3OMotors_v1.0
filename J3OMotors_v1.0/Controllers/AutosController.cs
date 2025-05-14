@@ -4,6 +4,8 @@ using J3OMotors_v1._0.Models.Autos;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
 
+
+
 namespace J3OMotors_v1._0.Controllers
 {
     public class AutosController : Controller
@@ -12,11 +14,6 @@ namespace J3OMotors_v1._0.Controllers
         public AutosController(IHttpClientFactory httpClientFactory)
         {
             _httpClient = httpClientFactory;
-        }
-
-        public  IActionResult Index()
-        {
-          return View();
         }
 
 
@@ -75,6 +72,29 @@ namespace J3OMotors_v1._0.Controllers
                 return View(auto);
             }
         }
+
+        // Envío del formulario para agregar un nuevo auto
+        [HttpGet]
+        public async Task<IActionResult> Index() //ENTIENDO QUE NO INGRESO CON UN CAMPO SI NO QUE LO MANDO A LLAMAR Y DESEREALIZAR A LA VEZ MAS ABAJO *duda para omar jeje*
+        {
+            var cliente = _httpClient.CreateClient();
+            // Realizar la solicitud HTTP GET
+            var response = await cliente.GetAsync("https://localhost:7174/api/autos");
+
+            if (response.IsSuccessStatusCode)
+            {
+                // Leer y deserializar los datos de la API
+                var jsonData = await response.Content.ReadAsStringAsync();
+                var model = JsonConvert.DeserializeObject<List<AutosViewModel>>(jsonData);
+
+                // Pasar los datos a la vista
+                return View(model);
+            }
+
+            // Manejar errores
+            return View(new List<AutosViewModel>());
+        }
+
     }
 }
     
