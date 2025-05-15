@@ -1,6 +1,61 @@
-﻿@model List<J3OMotors_v1._0.Models.Autos.AutosViewModel>    
+﻿@model List<J3OMotors_v1._0.Models.Autos.AutosViewModel>
 
 @{
-    ViewData["Title"] = "Listado de Autos";
+    ViewData["Title"] = "";
 }
 
+
+
+
+
+<main>
+        
+        <div class="col-md-12">
+                <br />
+                <h1 class="text-center">TODA NUESTRA GAMA DE VEHICULOS</h1>
+                <br />
+                <hr>
+                <br/>  
+        </div>
+   
+        
+        
+        <div class="">
+            <h2>@ViewData["Title"]</h2>
+            <div class="row m-xxl-5">
+       
+                @foreach (var auto in Model)
+                {
+                    <div class="col-md-3">
+
+                        <div class="card mb-4 border-4 h-100 shadow-lg">
+                            
+                            <div class="card-header" style="height:250px">
+                                
+                                <img src="@auto.RutaImagen" alt="Imagen de @auto.Modelo" class="img-fluid h-100 w-100" />
+                                
+                            </div>
+                            
+                            <div class="card-body border-2">
+
+                            <p class="card-text" style="font-size:larger">
+                                <b>Modelo:</b> @auto.Modelo<br />
+                                <b>Fabricante:</b> @auto.Fabricante<br />
+                                <b>Año:</b> @auto.FechaModelo<br />
+                                <b>Precio:</b> @auto.Costo<br />
+                                </p>
+                                
+                            </div>
+                                <a asp-action="Create" asp-controller="Autos" class="btn btn-primary btn-lg ">Cotizar</a>
+                        
+                        </div>
+
+                    </div>
+                }
+
+
+
+            </div>
+        </div>
+
+</main>
