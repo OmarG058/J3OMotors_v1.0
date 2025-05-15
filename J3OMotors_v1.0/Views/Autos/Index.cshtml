@@ -27,23 +27,29 @@
                 @foreach (var auto in Model)
                 {
                     <div class="col-md-3">
+
                         <div class="card mb-4 border-4 h-100 shadow-lg">
+                            
                             <div class="card-header" style="height:250px">
                                 
                                 <img src="@auto.RutaImagen" alt="Imagen de @auto.Modelo" class="img-fluid h-100 w-100" />
                                 
                             </div>
+                            
                             <div class="card-body border-2">
-                                <p class="card-text">
-                                    Modelo: @auto.Modelo<br />
-                                    Fabricante: @auto.Fabricante<br />
-                                    Año: @auto.FechaModelo<br />
-                                    Precio: @auto.Costo<br />
+
+                            <p class="card-text" style="font-size:larger">
+                                <b>Modelo:</b> @auto.Modelo<br />
+                                <b>Fabricante:</b> @auto.Fabricante<br />
+                                <b>Año:</b> @auto.FechaModelo<br />
+                                <b>Precio:</b> @auto.Costo<br />
                                 </p>
                                 
                             </div>
-                        <a href="#" class="btn btn-primary btn-dark btn-lg">Cotizar</a>
+                                <a asp-action="Create" asp-controller="Autos" class="btn btn-primary btn-lg ">Cotizar</a>
+                        
                         </div>
+
                     </div>
                 }
 

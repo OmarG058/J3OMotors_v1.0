@@ -1,0 +1,72 @@
+﻿@model J3OMotors_v1._0.Models.Autos.AutosViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+
+<div class="col-md-12">
+
+    <br />
+    <h2 class="text-center fs-1">  <b>EDITAR AUTO</b>  </h2>
+    <hr>
+    <br />
+    <br />
+
+</div>
+
+<div class="container p-5 shadow-lg" style="background-color: ghostwhite">
+
+    <div class="card-body">
+
+        <form form asp-action="Edit" method="post" enctype="multipart/form-data" style="font-size:larger">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="m-4">
+                <label>  <b>Id:</b>  :</label>
+                <input asp-for="Id" class="form-control form-control-lg" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="m-4">
+                <label>  <b>Modelo:</b>  :</label>
+                <input asp-for="Modelo" class="form-control form-control-lg" />
+                <span asp-validation-for="Modelo" class="text-danger"></span>
+            </div>
+            <div class="m-4">
+                <label>  <b>Fecha del Modelo:</b>  :</label>
+                <input asp-for="FechaModelo" class="form-control form-control-lg" />
+                <span asp-validation-for="FechaModelo" class="text-danger"></span>
+            </div>
+            <div class="m-4">
+                <label>  <b>Costo:</b>  :</label>
+                <input asp-for="Costo" class="form-control form-control-lg" />
+                <span asp-validation-for="Costo" class="text-danger"></span>
+            </div>
+            <div class="m-4">
+                <label>  <b>Fabricante:</b>  :</label>
+                <input asp-for="Fabricante" class="form-control form-control-lg" />
+                <span asp-validation-for="Fabricante" class="text-danger"></span>
+            </div>
+            <div class="m-4">
+                <label>  <b>Numero de Serie del Auto:</b>  :</label>
+                <input asp-for="NumeroSerie" class="form-control form-control-lg" />
+                <span asp-validation-for="NumeroSerie" class="text-danger"></span>
+            </div>
+            <div class="m-4">
+                <label>  <b>Imagen:</b>  </label>
+                <input type="file" name="archivo" class="form-control form-control-lg" />
+            </div>
+            <br />
+            <input type="submit" class="btn-primary bt-xl shadow-lg mb-lg-5 rounded-3 m-4" />
+
+
+        </form>
+    
+    </div>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
