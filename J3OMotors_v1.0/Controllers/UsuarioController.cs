@@ -19,7 +19,7 @@ namespace J3OMotors_v1._0.Controllers
             _httpClient = httpClientFactory.CreateClient();
         }
 
-
+        
         public IActionResult Create()
         {
             return View();
@@ -46,7 +46,54 @@ namespace J3OMotors_v1._0.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            if (id <= 0)
+            {
+                TempData["ErrorMessage"] = "ID inválido.";
+                return RedirectToAction("Index", "Perfil");
+            }
 
+            // Llamada a la API para obtener el usuario por ID
+            var response = await _httpClient.GetAsync($"{Routes.UrlBaseApiUsuario}/{id}");
+
+            if (!response.IsSuccessStatusCode)
+            {
+                TempData["ErrorMessage"] = "No se pudieron obtener los datos del usuario.";
+                return RedirectToAction("Index", "Perfil");
+            }
+
+            var usuario = await response.Content.ReadFromJsonAsync<UsuarioCreateViewModel>();
+
+            if (usuario == null)
+            {
+                TempData["ErrorMessage"] = "El usuario no existe.";
+                return RedirectToAction("Index", "Perfil");
+            }
+
+            return View(usuario);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(UsuarioCreateViewModel model) 
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+            var json = JsonSerializer.Serialize(model);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await _httpClient.PutAsync($"{Routes.UrlBaseApiUsuario}/{model.idUsuario}",content);
+
+            if (response.IsSuccessStatusCode) 
+            {
+                TempData["SuccessMessage"] = "Los datos se actualizaron correctamente.";
+                return RedirectToAction("Index", "Perfil"); // o donde muestres la lista
+            }
+            ModelState.AddModelError(string.Empty, "Error al actualizar el cliente.");
+            return View(model);
+
+        }
 
     }
 }

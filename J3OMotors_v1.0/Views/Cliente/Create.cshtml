@@ -4,75 +4,97 @@
     ViewData["Title"] = "Completar Datos del Cliente";
 }
 
-<h2>@ViewData["Title"]</h2>
 
-<form asp-action="Create" method="post">
-    <input type="hidden" asp-for="IdUsuario" />
+<link href="~/css/MyCustoms.css" rel="stylesheet" />
 
-    <div class="form-group">
-        <label asp-for="Nombre"></label>
-        <input asp-for="Nombre" class="form-control" />
-        <span asp-validation-for="Nombre" class="text-danger"></span>
+<section class="min-vh-100 d-flex justify-content-center align-items-center bg-light py-5">
+    <div class="card shadow-lg p-4 w-100" style="max-width: 1200px;">
+        <div class="card-header bg-dark text-white text-center">
+            <h3 class="mb-0 p-4">Completa tu informacion de Cliente</h3>
+        </div>
+
+        <div class="card-body" style="width:100%;">
+            <form asp-action="Create" method="post" novalidate>
+                <input type="hidden" asp-for="IdUsuario" />
+                @Html.HiddenFor(model => model.IdCliente)
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <label class="custom-label">Datos Personales</label>
+                <div class="row mb-5">
+                    <div class="col-md-6 form-floating">
+                        <input asp-for="Nombre" class=" custom-imput" placeholder="Nombre" />
+
+                        <span asp-validation-for="Nombre" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6 form-floating">
+                        <input asp-for="Apellidos" class=" custom-imput" placeholder="Apellidos" />
+
+                        <span asp-validation-for="Apellidos" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-5">
+                    <div class="col-md-6 form-floating">
+                        <input asp-for="Telefono" class=" custom-imput" placeholder="Teléfono" />
+
+                        <span asp-validation-for="Telefono" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6 form-floating">
+                        <input asp-for="Curp" class=" custom-imput" placeholder="CURP" />
+
+                        <span asp-validation-for="Curp" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="mb-5 form-floating">
+                    <input asp-for="Rfc" class=" custom-imput" placeholder="RFC" />
+
+                    <span asp-validation-for="Rfc" class="text-danger small"></span>
+                </div>
+
+                <label class="custom-label">Direccion</label>
+
+                <div class="row mb-5">
+                    <div class="col-md-6 form-floating">
+                        <input asp-for="Calle" class=" custom-imput" placeholder="Calle" />
+
+                        <span asp-validation-for="Calle" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6 form-floating">
+                        <input asp-for="Colonia" class=" custom-imput" placeholder="Colonia" />
+
+                        <span asp-validation-for="Colonia" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-5">
+                    <div class="col-md-6 form-floating">
+                        <input asp-for="Ciudad" class=" custom-imput" placeholder="Ciudad" />
+
+                        <span asp-validation-for="Ciudad" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6 form-floating">
+                        <input asp-for="Estado" class=" custom-imput" placeholder="Estado" />
+
+                        <span asp-validation-for="Estado" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="form-floating mb-5">
+                    <input asp-for="CodigoPostal" class=" custom-imput" placeholder="Código Postal" />
+
+                    <span asp-validation-for="CodigoPostal" class="text-danger small"></span>
+                </div>
+
+                <div class="text-end">
+                    <button asp-action="Create" asp-controller="Cliente" type="submit" class="custom-button">Guardar</button>
+                    <a asp-action="Index" asp-controller="Perfil" class="custom-button">Regresar</a>
+                </div>
+            </form>
+        </div>
     </div>
+</section>
 
-    <div class="form-group">
-        <label asp-for="Apellidos"></label>
-        <input asp-for="Apellidos" class="form-control" />
-        <span asp-validation-for="Apellidos" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Telefono"></label>
-        <input asp-for="Telefono" class="form-control" />
-        <span asp-validation-for="Telefono" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Curp"></label>
-        <input asp-for="Curp" class="form-control" />
-        <span asp-validation-for="Curp" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Rfc"></label>
-        <input asp-for="Rfc" class="form-control" />
-        <span asp-validation-for="Rfc" class="text-danger"></span>
-    </div>
-
-    <h4>Dirección</h4>
-
-    <div class="form-group">
-        <label asp-for="Calle"></label>
-        <input asp-for="Calle" class="form-control" />
-        <span asp-validation-for="Calle" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Colonia"></label>
-        <input asp-for="Colonia" class="form-control" />
-        <span asp-validation-for="Colonia" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Ciudad"></label>
-        <input asp-for="Ciudad" class="form-control" />
-        <span asp-validation-for="Ciudad" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Estado"></label>
-        <input asp-for="Estado" class="form-control" />
-        <span asp-validation-for="Estado" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="CodigoPostal"></label>
-        <input asp-for="CodigoPostal" class="form-control" />
-        <span asp-validation-for="CodigoPostal" class="text-danger"></span>
-    </div>
-
-    <button type="submit" class="btn btn-success">Guardar</button>
-</form>
 
 @section Scripts {
     @{

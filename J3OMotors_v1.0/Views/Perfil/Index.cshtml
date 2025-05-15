@@ -1,40 +1,58 @@
 ﻿@model J3OMotors_v1._0.Models.Perfil.PerfilViewModel
 
-<section style="margin-top: 50px;">
-    <div class="container ">
-        <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-12 col-md-10 col-lg-8 col-xl-7">
-                <div class="card bg-dark text-white" style="border-radius: 1rem;">
-                    <div class="card-body p-5">
 
-                        <h2 class="fw-bold text-uppercase text-center mb-4">Mi Perfil</h2>
 
-                        <!-- Datos de Usuario -->
-                        <div class="card mb-4 " style="background-color: rgba(255,255,255,0.05); border-radius: 0.5rem;">
-                            <div class="card-body fs-2">
-                                <h5 class="mb-3 text-white-50">Datos de Usuario</h5>
-                                <p><strong>Correo:</strong> @Model.Usuario.correo</p>
-                            </div>
-                        </div>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+    </div>
+}
 
-                        <!-- Datos de Cliente -->
-                        <div class="card" style="background-color: rgba(255,255,255,0.05); border-radius: 0.5rem;">
-                            <div class="card-body fs-2">
-                                <h5 class="mb-3 text-white-50">Datos de Cliente</h5>
-                                <p><strong>Nombre:</strong> @Model.Cliente.Nombre @Model.Cliente.Apellidos</p>
-                                <p><strong>Teléfono:</strong> @Model.Cliente.Telefono</p>
-                                <p><strong>CURP:</strong> @Model.Cliente.Curp</p>
-                                <p><strong>RFC:</strong> @Model.Cliente.Rfc</p>
-                                <p><strong>Dirección:</strong> @Model.Cliente.Calle, @Model.Cliente.Colonia, @Model.Cliente.Ciudad, @Model.Cliente.Estado</p>
-                                <p><strong>Código Postal:</strong> @Model.Cliente.CodigoPostal</p>
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+<link href="~/css/MyCustoms.css" rel="stylesheet" />
 
-                                <div class="text-center mt-4">
-                                    <a href="@Url.Action("Edit", "Clientes", new { id = Model.Cliente.IdCliente })" class="btn btn-light px-4">Editar mis datos</a>
-                                </div>
-                            </div>
-                        </div>
+<section class="container-fluid min-vh-100 d-flex align-items-center justify-content-center bg-light py-5">
+    <div class="row w-100 shadow-lg rounded overflow-hidden" style="max-width: 90%;">
+        <!-- Encabezado -->
+        <div class="bg-black w-100 py-4">
+            <h2 class="text-white text-center fw-bold fs-1">Mi Perfil</h2>
+        </div>
 
-                    </div>
+        <!-- Imagen decorativa -->
+        <div class="col-md-6 d-none d-md-block p-0">
+            <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e" alt="Perfil decorativo" class="img-fluid h-100 w-100 object-fit-cover">
+        </div>
+
+        <!-- Información del usuario y cliente -->
+        <div class="col-12 col-md-6 bg-white p-5">
+            <!-- Datos de Usuario -->
+            <div class="mb-4">
+                <h4 class="text-primary mb-3">Datos de Usuario</h4>
+                <p><strong>Correo:</strong> @Model.Usuario.correo</p>
+                <p><strong>Contraseña:</strong> *********</p>
+                <div class="text-center mt-3 p-3">
+                    <a asp-action="Edit" asp-controller="Usuario"  asp-route-id="@Model.Usuario.idUsuario" class="custom-button">Editar Usuario</a>
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- Datos de Cliente -->
+            <div class="mt-4" style="">
+                <h4 class="text-primary mb-3">Datos de Cliente</h4>
+                <p><strong>Nombre:</strong> @Model.Cliente.Nombre @Model.Cliente.Apellidos</p>
+                <p><strong>Teléfono:</strong> @Model.Cliente.Telefono</p>
+                <p><strong>CURP:</strong> @Model.Cliente.Curp</p>
+                <p><strong>RFC:</strong> @Model.Cliente.Rfc</p>
+                <p><strong>Dirección:</strong> @Model.Cliente.Calle, @Model.Cliente.Colonia, @Model.Cliente.Ciudad, @Model.Cliente.Estado</p>
+                <p><strong>Código Postal:</strong> @Model.Cliente.CodigoPostal</p>
+                <div class="text-center mt-3 p-3">
+                    <a asp-action="Edit" asp-controller="Cliente" asp-route-id="@Model.Cliente.IdCliente" class="custom-button">Editar Cliente</a>
                 </div>
             </div>
         </div>

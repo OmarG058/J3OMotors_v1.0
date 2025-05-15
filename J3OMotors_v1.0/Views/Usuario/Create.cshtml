@@ -3,66 +3,70 @@
 @{
     ViewData["Title"] = "Create";
 }
+<link href="~/css/MyCustoms.css" rel="stylesheet" />
 
-<section style="margin-top: 50px;">
-    <div class="container">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card bg-dark text-white" style="border-radius: 1rem;">
-                    <div class="card-body p-5 text-center">
+<section class="min-vh-100 d-flex align-items-center justify-content-center bg-light">
+    <div class="row w-100 shadow-lg rounded overflow-hidden" style="max-width: 80%;">
 
-                        <div class="mb-md-5 mt-md-4 pb-5">
-                            <h2 class="fw-bold mb-2 text-uppercase">Registro</h2>
-                            <p class="text-white-50 mb-4">Crea tu cuenta ingresando tus datos</p>
+        <!-- Encabezado -->
+        <div class="bg-dark w-100 py-4">
+            <h2 class="text-white text-center m-0" style="font-size: 2.5rem;">Crea tu Cuenta</h2>
+        </div>
 
-                            <form asp-action="Create" method="post">
+        <!-- Imagen (oculta en pantallas pequeñas) -->
+        <div class="col-md-6 d-none d-md-block p-0">
+            <img src="https://static.vecteezy.com/system/resources/previews/022/360/050/non_2x/add-user-icon-registration-illustration-sign-avatar-symbol-new-profile-logo-vector.jpg"
+                 alt="Registro" class="img-fluid h-100 w-100 object-fit-cover">
+        </div>
 
-                                <div class="mb-3">
-                                    <label asp-for="correo" class="form-label">Correo electrónico</label>
-                                    <input asp-for="correo" type="email" class="form-control fs-5" placeholder="nombre@example.com" />
-                                    <span asp-validation-for="correo" class="text-danger small"></span>
-                                </div>
+        <!-- Formulario -->
+        <div class="col-12 col-md-6 bg-white p-5">
+            <h3 class="mb-4 text-center">Crea tu cuenta</h3>
 
-                                <div class="mb-3">
-                                    <label asp-for="contrasenia" class="form-label">Contraseña</label>
-                                    <input asp-for="contrasenia" type="password" class="form-control fs-5" />
-                                    <span asp-validation-for="contrasenia" class="text-danger small"></span>
-                                </div>
+            <form asp-action="Create" method="post" novalidate>
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-                                <div class="mb-3">
-                                    <label asp-for="idTipo" class="form-label">Tipo de Usuario</label>
-                                    <select asp-for="idTipo" class="form-select fs-5">
-                                        <option value="2">Cliente</option>
-                                    </select>
-                                    <span asp-validation-for="idTipo" class="text-danger small"></span>
-                                </div>
-
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-outline-light btn-lg px-5 mt-3">Registrar</button>
-                                </div>
-
-                                <div class="text-danger mt-3">
-                                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-                                </div>
-                            </form>
-
-                            <div class="d-flex justify-content-center text-center mt-4 pt-1">
-                                <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
-                                <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
-                                <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <p class="mb-0">
-                                ¿Ya tienes una cuenta?
-                                <a asp-action="Index" asp-controller="Login" class="text-white-50 fw-bold">Iniciar sesión</a>
-                            </p>
-                        </div>
-
-                    </div>
+                <label class="custom-label">Correo electronico </label>
+                <div class="form-floating mb-5">
+                    <input asp-for="correo" type="email" class=" custom-imput" placeholder="nombre@example.com" />
+                   
+                    <span asp-validation-for="correo" class="text-danger"></span>
                 </div>
-            </div>
+
+                <label class="custom-label">Cotraseña</label>
+                <div class="form-floating mb-5">
+                    <input asp-for="contrasenia" type="password" class=" custom-imput" placeholder="Contraseña" />
+                    
+                    <span asp-validation-for="contrasenia" class="text-danger"></span>
+                </div>
+
+                <label class="custom-label">Tipo de Usuario</label>
+                <div class="form-floating mb-5">
+                    <select asp-for="idTipo" class=" custom-imput">
+                        <option value="2">Cliente</option>
+                    </select>
+                    
+                    <span asp-validation-for="idTipo" class="text-danger"></span>
+                </div>
+
+                <div class="d-grid mb-5">
+                    <button type="submit" class="custom-button">Registrar</button>
+                </div>
+
+                <p class="text-center mt-3">
+                    ¿Ya tienes una cuenta?
+                    <a asp-action="Index" asp-controller="Login" class="text-decoration-none fw-bold text-primary">
+                        Iniciar sesión
+                    </a>
+                </p>
+
+                <!-- Íconos sociales -->
+                <div class="d-flex justify-content-center mt-4 gap-4">
+                    <a href="#"><i class="fab fa-facebook fa-lg text-dark"></i></a>
+                    <a href="#"><i class="fab fa-twitter fa-lg text-dark"></i></a>
+                    <a href="#"><i class="fab fa-google fa-lg text-dark"></i></a>
+                </div>
+            </form>
         </div>
     </div>
 </section>

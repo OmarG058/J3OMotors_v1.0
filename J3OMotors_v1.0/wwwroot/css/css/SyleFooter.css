@@ -1,4 +1,6 @@
-
+* {
+    font-family: "Nissan Regular","Nissan Light",Verdana,Arial,sans-serif;
+}
 
 .footer {
     background-color: var(--negro);

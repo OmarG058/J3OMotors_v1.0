@@ -4,7 +4,7 @@ namespace J3OMotors_v1._0.Models.Usuario
 {
     public class UsuarioCreateViewModel
     {
-        int? idUsuario  { get; set; } = null ;    
+        public int idUsuario  { get; set; }   
         [Required]
         [EmailAddress]
 

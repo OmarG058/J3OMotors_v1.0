@@ -1,4 +1,5 @@
-:root{
-    --TextoPrincipal:"Titillium Web", sans-serif;
-    --Textosecundario:"Kanit", sans-serif;
+:root {
+    --TextoPrincipal: font-family: "Nissan Regular","Nissan Light",Verdana,Arial,sans-serif;
+    --Textosecundario: font-family: "Nissan Regular","Nissan Light",Verdana,Arial,sans-serif;
+    ;
 }

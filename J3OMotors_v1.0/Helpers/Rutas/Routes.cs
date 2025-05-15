@@ -9,6 +9,7 @@
 
         //USUARIO
         public static string UrlBaseApiUsuario { get; set; } = UrlBaseApi + "api/usuario";
+
         public static string UrlBaseApiUsuarioRegister { get; set; } = UrlBaseApi + "api/usuario/Register";
         public static string UsuarioPorId(int id) => $"{UrlBaseApiUsuario}/{id}";
 
@@ -18,8 +19,10 @@
         {
             return $"{UrlBaseApi}api/Cliente/buscar?nombre={Uri.EscapeDataString(nombre)}&apellidos={Uri.EscapeDataString(apellidos)}";
         }
-
-        //cliente por id de usuario
+        public static string ActualizarClientePorId(int id)
+        {
+            return $"{UrlBaseApi}api/Cliente/{id}";
+        }   
         public static string BuscarClientePorIdUsuario(int idUsuario)
         {
             return $"{UrlBaseApi}Cliente/usuario/{idUsuario}";
