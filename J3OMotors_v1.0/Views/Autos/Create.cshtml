@@ -1,53 +1,66 @@
 ﻿@model J3OMotors_v1._0.Models.Autos.AutosViewModel
 
 
+<link href="~/css/MyCustoms.css" rel="stylesheet" />
 
-<div class="col-md-12">
+<section class="min-vh-100 d-flex align-items-center mt-5" style="background-color: #f8f9fa;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-11 col-lg-10" style="max-width: 1200px;">
+                <div class="card shadow-lg rounded-4 border-0">
+                    <div class="card-header bg-dark text-white text-center rounded-top-4 p-5">
+                        <h3 class="mb-0">Registrar Auto</h3>
+                    </div>
+                    <div class="card-body p-5 bg-white rounded-bottom-4">
 
-    <br />
-    <h2 class="text-center fs-1">  <b>CREAR AUTO</b>  </h2>
-    <hr>
-    <br />
-    <br />
+                        <form asp-action="Create" method="post" enctype="multipart/form-data" class="fs-5">
 
-</div>
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
 
+                            <div class="mb-4">
+                                <label class="custom-label">Modelo</label>
+                                <input asp-for="Modelo" class="custom-imput" placeholder="Lancer" />
+                                <span asp-validation-for="Modelo" class="text-danger small"></span>
+                            </div>
 
-<div class="container p-5 shadow-lg" style="background-color: ghostwhite">
+                            <div class="mb-4">
+                                <label class="custom-label">Fecha del Modelo</label>
+                                <input asp-for="FechaModelo" class="custom-imput" placeholder="2025-01-01" />
+                                <span asp-validation-for="FechaModelo" class="text-danger small"></span>
+                            </div>
 
-    <div class="card-body">
+                            <div class="mb-4">
+                                <label class="custom-label">Costo</label>
+                                <input asp-for="Costo" class="custom-imput" placeholder="125,000.00" />
+                                <span asp-validation-for="Costo" class="text-danger small"></span>
+                            </div>
 
-        <form asp-action="Create" method="post" enctype="multipart/form-data" style="font-size:larger">
+                            <div class="mb-4">
+                                <label class="custom-label">Fabricante</label>
+                                <input asp-for="Fabricante" class="custom-imput" placeholder="Mitsubishi" />
+                                <span asp-validation-for="Fabricante" class="text-danger small"></span>
+                            </div>
 
-            <div class="m-4">
-                <label>  <b>Modelo:</b>  </label>
-                <input asp-for="Modelo" class="form-control form-control-lg"  />
+                            <div class="mb-4">
+                                <label class="custom-label">Número de Serie</label>
+                                <input asp-for="NumeroSerie" class="custom-imput" placeholder="YBF553XGT" />
+                                <span asp-validation-for="NumeroSerie" class="text-danger small"></span>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="custom-label">Imagen</label>
+                                <input type="file" name="archivo" class="custom-imput" />
+                            </div>
+
+                            <div class="text-center">
+                                <button asp-action="Create" asp-controller="Autos" class="custom-button">Registrar</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
             </div>
-            <div class="m-4">
-                <label>  <b>Fecha del Modelo:</b>  </label>
-                <input asp-for="FechaModelo" class="form-control form-control-lg" />
-            </div>
-            <div class="m-4">
-                <label>  <b>Costo:</b>  </label>
-                <input asp-for="Costo" class="form-control form-control-lg" />
-            </div>
-            <div class="m-4">
-                <label>  <b>Fabricante:</b>  </label>
-                <input asp-for="Fabricante" class="form-control form-control-lg" />
-            </div>
-            <div class="m-4">
-                <label> <b>Número de Serie:</b>  </label>
-                <input asp-for="NumeroSerie" class="form-control form-control-lg" />
-            </div>
-            <div class="m-4">
-                <label>  <b>Imagen:</b>  </label>
-                <input type="file" name="archivo" class="form-control form-control-lg" />
-            </div>
-            <br />
-            <button type="submit" class="btn-primary bt-xl shadow-lg mb-lg-5 rounded-3 m-4">Guardar</button>
-
-        </form>
-
+        </div>
     </div>
-
-</div>
+</section>

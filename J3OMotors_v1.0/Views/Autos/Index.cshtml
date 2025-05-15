@@ -3,10 +3,7 @@
 @{
     ViewData["Title"] = "";
 }
-
-
-
-
+<link href="~/css/MyCustoms.css" rel="stylesheet" />
 
 <main>
         
@@ -17,45 +14,49 @@
                 <hr>
                 <br/>  
         </div>
-   
-        
-        
-        <div class="">
-            <h2>@ViewData["Title"]</h2>
-            <div class="row m-xxl-5">
-       
-                @foreach (var auto in Model)
-                {
-                    <div class="col-md-3">
 
-                        <div class="card mb-4 border-4 h-100 shadow-lg">
-                            
-                            <div class="card-header" style="height:250px">
-                                
-                                <img src="@auto.RutaImagen" alt="Imagen de @auto.Modelo" class="img-fluid h-100 w-100" />
-                                
-                            </div>
-                            
-                            <div class="card-body border-2">
 
-                            <p class="card-text" style="font-size:larger">
-                                <b>Modelo:</b> @auto.Modelo<br />
-                                <b>Fabricante:</b> @auto.Fabricante<br />
-                                <b>Año:</b> @auto.FechaModelo<br />
-                                <b>Precio:</b> @auto.Costo<br />
-                                </p>
-                                
-                            </div>
-                                <a asp-action="Create" asp-controller="Autos" class="btn btn-primary btn-lg ">Cotizar</a>
-                        
+    <div class="container">
+        <h2 class="text-center my-4">@ViewData["Title"]</h2>
+        <div class="row">
+
+            @foreach (var auto in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-lg border-0">
+
+                        <!-- Imagen del auto -->
+                        <img src="@auto.RutaImagen" class="card-img-top" alt="Imagen de @auto.Modelo" style="height: 250px; object-fit: cover;">
+
+                        <!-- Detalles principales -->
+                        <div class="card-body">
+                            <h5 style="text-align:center; font-weight:700; font-size:1.7rem;" class="card-title pb-3">@auto.FechaModelo @auto.Fabricante @auto.Modelo</h5>
+                            <p class="card-text text-muted mb-2 pb-3">
+                                5 PTS, CVT, CD, 5 PAS, RA-17
+                            </p>
+
+                            <!-- Ubicación y teléfono -->
+                            <p class="mb-1 text-uppercase text-secondary small">GOMEZ PALACIO</p>
+                            <p>
+                                <i class="bi bi-telephone-fill"></i> 55-5836-9945
+                            </p>
+
+                            <!-- Precio -->
+                            <h4 class="text-dark fw-bold mt-3">$@auto.Costo.ToString("N0")</h4>
+
+                            <!-- Más info -->
+                            <p class="text-muted small">* Más información <i class="bi bi-info-circle"></i></p>
                         </div>
 
+                        <!-- Botón de acción -->
+                        <div class="card-footer bg-white border-0">
+                            <a asp-action="Create" asp-controller="Cotizaciones" asp-route-idAuto="@auto.Id" class="btn btn-dark w-100 p-3" style="font-size:1.4rem;">
+                                COTIZAR
+                            </a>
+                        </div>
                     </div>
-                }
+                </div>
+            }
 
-
-
-            </div>
         </div>
-
-</main>
+    </div>

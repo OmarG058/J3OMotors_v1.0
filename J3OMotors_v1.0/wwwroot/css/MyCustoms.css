@@ -22,6 +22,12 @@ a {
     outline: 0;
 }
 
+.custom-imput:focus {
+    border-color: #007bff; /* azul brillante, puedes cambiarlo */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* sombra azul */
+    background-color: #f8f9fa; /* opcional: cambia ligeramente el fondo */
+}
+
 .custom-button {
     text-transform: uppercase;
     padding: 12px 30px;
@@ -29,11 +35,13 @@ a {
     font-family: "Nissan Regular","Nissan Light",Verdana,Arial,sans-serif;
     background: #000;
     color: #fff;
+    border: 1px solid #000;
+    transition: all 0.3s ease;
 }
 
-.custom-button :hover  {
-    background: #fff;
-    color: #050;
+.custom-button:hover {
+    background: rgba(0, 0, 0, 0.7); /* Negro con opacidad del 70% */
+    color: #fff;
     border: 1px solid #000;
 }
 
