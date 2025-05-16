@@ -107,7 +107,7 @@ namespace J3OMotors_v1._0.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Edit(AutosViewModel auto, IFormFile archivo)
+        public async Task<IActionResult> Edit(AutosViewModel auto, IFormFile archivo, string Id)
         {
             if (archivo == null || archivo.Length == 0)
             {
@@ -119,7 +119,6 @@ namespace J3OMotors_v1._0.Controllers
             var form = new MultipartFormDataContent();
 
             // Agregar otros campos del formulario
-            form.Add(new StringContent(auto.Id), "Id");
             form.Add(new StringContent(auto.Modelo), "Modelo");
             form.Add(new StringContent(auto.FechaModelo), "FechaModelo");
             form.Add(new StringContent(auto.Costo.ToString()), "Costo");
@@ -139,7 +138,7 @@ namespace J3OMotors_v1._0.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Index"); // Redirige al listado de autos
+                    return RedirectToAction("TablaAutos"); // Redirige al listado de autos
                 }
                 else
                 {
@@ -154,7 +153,64 @@ namespace J3OMotors_v1._0.Controllers
                 return View(auto);
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> TablaAutos() 
+        {
+            var cliente = _httpClient.CreateClient();
+            // Realizar la solicitud HTTP GET
+            var response = await cliente.GetAsync("https://localhost:7174/api/autos");
+
+            if (response.IsSuccessStatusCode)
+            {
+                // Leer y deserializar los datos de la API
+                var jsonData = await response.Content.ReadAsStringAsync();
+                var model = JsonConvert.DeserializeObject<List<AutosViewModel>>(jsonData);
+
+                // Pasar los datos a la vista
+                return View(model);
+            }
+
+            // Manejar errores
+            return View(new List<AutosViewModel>());
+        }
+
+        [HttpGet]
+        public IActionResult Delete()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(AutosViewModel auto)
+        {
+
+            var cliente = _httpClient.CreateClient();
+            try
+            {
+                // Realizar el POST a la API
+                var response = await cliente.DeleteAsync($"https://localhost:7174/api/autos/{auto.Id}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("TablaAutos"); // Redirige al listado de autos
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Error al eliminar el auto.");
+                    return View(auto);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores en caso de que falle el HTTP request
+                ModelState.AddModelError("", $"Error al procesar la solicitud: {ex.Message}");
+                return View(auto);
+            }
+        }
     }
+
 }
     
 
