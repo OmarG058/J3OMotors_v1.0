@@ -1,12 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using J3OMotors_v1._0.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<J3OMotors_v1_0Context>(options =>
-
-    options.UseSqlServer(builder.Configuration.GetConnectionString("J3OMotors_v1_0Context") ?? throw new InvalidOperationException("Connection string 'J3OMotors_v1_0Context' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

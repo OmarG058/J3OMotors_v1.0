@@ -94,7 +94,7 @@ namespace J3OMotors_v1._0.Controllers
 
         [HttpGet]
         public IActionResult Delete()
-        { 
+        {
             return View();
         }
 

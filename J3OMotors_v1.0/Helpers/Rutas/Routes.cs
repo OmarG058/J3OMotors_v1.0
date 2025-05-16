@@ -22,13 +22,12 @@
         public static string ActualizarClientePorId(int id)
         {
             return $"{UrlBaseApi}api/Cliente/{id}";
-        }   
+        }
         public static string BuscarClientePorIdUsuario(int idUsuario)
         {
             return $"{UrlBaseApi}Cliente/usuario/{idUsuario}";
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         public static string ClientePorId(int id) => $"{UrlBaseApiCliente}/{id}";
 
 
@@ -53,9 +52,7 @@
             return $"{UrlBaseApi}api/Seguros/eliminar/{id}";
         }
 
-=======
-=======
->>>>>>> 3e762aaaac1126207f5f0c8c58a596ea77085f85
+
         public static string ClientePorId(int? id) => $"{UrlBaseApiCliente}/{id}";
         //Autos
         public static string UrlBaseApiAutos { get; set; } = UrlBaseApi + "api/autos";
@@ -63,9 +60,5 @@
         public static string UrlBaseApiCotizacion { get; set; } = UrlBaseApi + "api/cotizaciones";
         //Accesorios
         public static string UrlBaseApiAccesorios { get; set; } = UrlBaseApi + "api/accesorios";
-<<<<<<< HEAD
->>>>>>> 3e762aaaac1126207f5f0c8c58a596ea77085f85
-=======
->>>>>>> 3e762aaaac1126207f5f0c8c58a596ea77085f85
     }
 }
