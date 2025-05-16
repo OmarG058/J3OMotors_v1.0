@@ -1,6 +1,6 @@
 ﻿namespace J3OMotors_v1._0.Models.Seguro
 {
-    public class SeguroViewModel
+    public class SeguroAutoViewModel
     {
         public int IdSeguro { get; set; }
         

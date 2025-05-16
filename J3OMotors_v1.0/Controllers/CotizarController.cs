@@ -78,7 +78,7 @@ namespace J3OMotors_v1._0.Controllers
 
                 // Obtener seguros desde API seguros (si tienes)
                 var segurosResponse = await _httpClient.GetAsync("https://localhost:7174/api/seguros");
-                var seguros = await segurosResponse.Content.ReadFromJsonAsync<List<SeguroViewModel>>();
+                var seguros = await segurosResponse.Content.ReadFromJsonAsync<List<SeguroAutoViewModel>>();
 
                 // Pasar al ViewBag para que la vista tenga las listas para selects
                 ViewBag.Asientos = asientos;
@@ -144,7 +144,7 @@ namespace J3OMotors_v1._0.Controllers
             ViewBag.Asientos = await asientosResponse.Content.ReadFromJsonAsync<List<AccesorioViewModel>>();
             ViewBag.Colores = await coloresResponse.Content.ReadFromJsonAsync<List<AccesorioViewModel>>();
             ViewBag.Rines = await rinesResponse.Content.ReadFromJsonAsync<List<AccesorioViewModel>>();
-            ViewBag.Seguros = await segurosResponse.Content.ReadFromJsonAsync<List<SeguroViewModel>>();
+            ViewBag.Seguros = await segurosResponse.Content.ReadFromJsonAsync<List<SeguroAutoViewModel>>();
             ViewBag.TiposPago = new List<string> { "Contado", "Credito" };
             ViewBag.Plazos = new List<int> { 12, 24, 36 };
         }

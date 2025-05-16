@@ -33,7 +33,7 @@
                     <label class="custom-label">Seguro Opcional</label>
                     <select asp-for="IdSeguro" class="custom-imput">
                         <option value="">-- Selecciona un seguro --</option>
-                        @foreach (var seguro in (List<J3OMotors_v1._0.Models.Seguro.SeguroViewModel>)ViewBag.Seguros)
+                        @foreach (var seguro in (List<J3OMotors_v1._0.Models.Seguro.SeguroAutoViewModel>)ViewBag.Seguros)
                         {
                             <option value="@seguro.IdSeguro">@seguro.Tipo - @seguro.Costo.ToString("C")</option>
                         }

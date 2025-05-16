@@ -10,11 +10,11 @@ using J3OMotors_v1._0.Models.Autos;
 
 namespace J3OMotors_v1._0.Controllers
 {
-    public class SeguroController : Controller
+    public class SeguroAutoController : Controller
     {
         private readonly IHttpClientFactory _httpClient;
 
-        public SeguroController(IHttpClientFactory httpClientFactory)
+        public SeguroAutoController(IHttpClientFactory httpClientFactory)
         {
             _httpClient = httpClientFactory;
         }
