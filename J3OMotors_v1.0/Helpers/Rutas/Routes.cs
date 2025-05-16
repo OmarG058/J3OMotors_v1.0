@@ -27,7 +27,12 @@
         {
             return $"{UrlBaseApi}Cliente/usuario/{idUsuario}";
         }
-        public static string ClientePorId(int id) => $"{UrlBaseApiCliente}/{id}";
-
+        public static string ClientePorId(int? id) => $"{UrlBaseApiCliente}/{id}";
+        //Autos
+        public static string UrlBaseApiAutos { get; set; } = UrlBaseApi + "api/autos";
+        //coizaciones
+        public static string UrlBaseApiCotizacion { get; set; } = UrlBaseApi + "api/cotizaciones";
+        //Accesorios
+        public static string UrlBaseApiAccesorios { get; set; } = UrlBaseApi + "api/accesorios";
     }
 }

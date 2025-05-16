@@ -1,0 +1,145 @@
+﻿@model J3OMotors_v1._0.Models.Cotizar.CotizacionViewModel
+
+
+
+@{
+    ViewData["Title"] = "Crear Cotización";
+}
+
+
+<div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center bg-light">
+    <div class="row w-100 shadow-lg rounded overflow-hidden" style="max-width: 80%;">
+
+        <!-- Encabezado superior -->
+        <div class="bg bg-black py-5">
+            <h2 class="text-white text-center fs-1">Nueva Cotización</h2>
+        </div>
+
+        <!-- Imagen del auto -->
+        <div class="col-md-6 d-none d-md-block p-0">
+            <img src="@ViewBag.ImagenAuto" alt="Auto seleccionado" class="img-fluid h-100 w-100 object-fit-cover">
+        </div>
+
+        <!-- Formulario de cotización -->
+        <div class="col-12 col-md-6 bg-white p-5">
+            <h3 class="mb-4 text-center">Detalles de la Cotización</h3>
+
+            <form asp-action="Create" method="post" class="needs-validation fs-5" novalidate>
+                <input type="hidden" asp-for="IdAuto" />
+                <input type="hidden" asp-for="IdCliente" />
+
+                <!-- Seguro -->
+                <div class="mb-3">
+                    <label class="custom-label">Seguro Opcional</label>
+                    <select asp-for="IdSeguro" class="custom-imput">
+                        <option value="">-- Selecciona un seguro --</option>
+                        @foreach (var seguro in (List<J3OMotors_v1._0.Models.Seguro.SeguroViewModel>)ViewBag.Seguros)
+                        {
+                            <option value="@seguro.IdSeguro">@seguro.Tipo - @seguro.Costo.ToString("C")</option>
+                        }
+                    </select>
+                </div>
+
+                <!-- Asiento -->
+                <div class="mb-3">
+                    <label class="custom-label">Tipo de Asiento</label>
+                    <select asp-for="IdAsiento" class="custom-imput" required>
+                        <option value="">-- Selecciona un asiento --</option>
+                        @foreach (var asiento in (List<AccesorioViewModel>)ViewBag.Asientos)
+                        {
+                            <option value="@asiento.IdAccesorio">@asiento.Tipo - @asiento.Costo.ToString("C")</option>
+                        }
+                    </select>
+                    <div class="invalid-feedback">Por favor selecciona un asiento.</div>
+                </div>
+
+                <!-- Color -->
+                <div class="mb-3">
+                    <label class="custom-label">Color de Auto</label>
+                    <select asp-for="IdColor" class="custom-imput" required>
+                        <option value="">-- Selecciona un color --</option>
+                        @foreach (var color in (List<AccesorioViewModel>)ViewBag.Colores)
+                        {
+                            <option value="@color.IdAccesorio">@color.Tipo - @color.Costo.ToString("C")</option>
+                        }
+                    </select>
+                    <div class="invalid-feedback">Por favor selecciona un color.</div>
+                </div>
+
+                <!-- Rin -->
+                <div class="mb-3">
+                    <label class="custom-label">Tipo de Rines</label>
+                    <select asp-for="IdRin" class="custom-imput" required>
+                        <option value="">-- Selecciona un rin --</option>
+                        @foreach (var rin in (List<AccesorioViewModel>)ViewBag.Rines)
+                        {
+                            <option value="@rin.IdAccesorio">@rin.Tipo - @rin.Costo.ToString("C")</option>
+                        }
+                    </select>
+                    <div class="invalid-feedback">Por favor selecciona un rin.</div>
+                </div>
+
+                <!-- Tipo de pago -->
+                <div class="mb-3">
+                    <label class="custom-label">Tipo de Pago</label>
+                    <select asp-for="TipoPago" class="custom-imput" id="tipoPago" required>
+                        <option value="">-- Selecciona tipo de pago --</option>
+                        @foreach (var tipo in (List<string>)ViewBag.TiposPago)
+                        {
+                            <option value="@tipo">@tipo</option>
+                        }
+                    </select>
+                    <div class="invalid-feedback">Por favor selecciona el tipo de pago.</div>
+                </div>
+
+                <!-- Plazo -->
+                <div class="mb-3" id="plazoMesesDiv" style="display: none;">
+                    <label asp-for="PlazoMeses" class="form-label">Plazo (meses)</label>
+                    <select asp-for="PlazoMeses" class="custom-imput">
+                        <option value="">-- Selecciona plazo --</option>
+                        @foreach (var plazo in (List<int>)ViewBag.Plazos)
+                        {
+                            <option value="@plazo">@plazo meses</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="d-grid mt-4">
+                    <button type="submit" class="custom-button">Guardar Cotización</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Mostrar/ocultar el plazo meses solo si tipo de pago es credito
+        document.getElementById('tipoPago').addEventListener('change', function () {
+            var valor = this.value.toLowerCase();
+            var plazoDiv = document.getElementById('plazoMesesDiv');
+            if (valor === 'credito') {
+                plazoDiv.style.display = 'block';
+            } else {
+                plazoDiv.style.display = 'none';
+                // Limpiar selección de plazo si no aplica
+                document.querySelector('[name="PlazoMeses"]').value = '';
+            }
+        });
+
+        // Bootstrap validation
+        (function () {
+            'use strict'
+            var forms = document.querySelectorAll('.needs-validation')
+            Array.prototype.slice.call(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+}
