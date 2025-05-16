@@ -29,5 +29,27 @@
         }
         public static string ClientePorId(int id) => $"{UrlBaseApiCliente}/{id}";
 
+
+        //SEGUROS
+
+        public static string UrlBaseApiSeguros { get; set; } = UrlBaseApi + "api/Seguros";
+        public static string ObtenerTodosLosSeguros() => UrlBaseApiSeguros;
+        public static string SeguroPorId(int id)
+        {
+            return $"{UrlBaseApiSeguros}/{id}";
+        }
+        public static string ModificarSeguroPorId(int id)
+        {
+            return $"{UrlBaseApiSeguros}/modificar/{id}";
+        }
+        public static string AgregarSeguro()
+        {
+            return $"{UrlBaseApiSeguros}/agregar";
+        }
+        public static string EliminarSeguroPorId(int id)
+        {
+            return $"{UrlBaseApi}api/Seguros/eliminar/{id}";
+        }
+
     }
 }

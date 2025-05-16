@@ -1,0 +1,62 @@
+﻿@model J3OMotors_v1._0.Models.Seguro.SegurosViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<link href="~/css/MyCustoms.css" rel="stylesheet" />
+
+<section class="min-vh-100 d-flex align-items-center mt-5" style="background-color: #f8f9fa;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <div class="card shadow-lg rounded-4 border-0">
+                    <div class="card-header bg-dark text-white text-center rounded-top-4 p-5">
+                        <h3 class="mb-0">Crear nuevo Seguro</h3>
+                    </div>
+                    <div class="card-body p-5 bg-white rounded-bottom-4">
+
+                        <form asp-action="Create" method="post" class="fs-5">
+
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+                            <div class="mb-4">
+                                <label class="custom-label">Tipo</label>
+                                <input asp-for="Tipo" class="custom-imput" placeholder="Ej. Seguro Completo" />
+                                <span asp-validation-for="Tipo" class="text-danger small"></span>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="custom-label">Costo</label>
+                                <input asp-for="Costo" class="custom-imput" placeholder="Ej. 2500.00" />
+                                <span asp-validation-for="Costo" class="text-danger small"></span>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="custom-label">Proveedor</label>
+                                <input asp-for="Proveedor" class="custom-imput" placeholder="Ej. Seguros MX" />
+                                <span asp-validation-for="Proveedor" class="text-danger small"></span>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="custom-label">Duración (meses)</label>
+                                <input asp-for="Duracion" class="custom-imput" placeholder="Ej. 12" />
+                                <span asp-validation-for="Duracion" class="text-danger small"></span>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="custom-button">Registrar nuevo Seguro</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
