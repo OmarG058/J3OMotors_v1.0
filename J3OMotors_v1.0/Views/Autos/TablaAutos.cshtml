@@ -30,6 +30,7 @@
                                     <th>Fabricante</th>
                                     <th>Fecha del Modelo</th>
                                     <th>Costo</th>
+                                    <th>imagen</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -43,8 +44,10 @@
                                         <td>@item.FechaModelo</td>
                                         <td>$@item.Costo</td>
                                         <td>
-                                            <a asp-action="Edit" asp-controller="Autos" asp-route-id="@item.Id" class="btn btn-sm btn-primary me-1">Editar</a>
-                                            <a asp-action="Delete" asp-controller="Autos" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Eliminar</a>
+                                            <img src="@item.RutaImagen" alt="Imagen del auto" class="img-fluid" style="width: 100px; height: auto;" />
+                                        <td>
+                                            <a asp-action="Edit" asp-controller="Autos" asp-route-id="@item.Id" class="btn btn-sm btn-primary me-1 fs-4">Editar</a>
+                                            <a asp-action="Delete" asp-controller="Autos" asp-route-id="@item.Id" class="btn btn-sm btn-danger fs-4">Eliminar</a>
                                         </td>
                                     </tr>
                                 }
@@ -52,7 +55,7 @@
                         </table>
 
                         <div class="text-center mt-4">
-                            <a asp-action="Create" asp-controller="Autos" class="btn btn-success custom-button">Registrar Nuevo Auto</a>
+                            <a asp-action="Create" asp-controller="Autos" class="btn btn-success custom-button fs-3 mt-4">Registrar Nuevo Auto</a>
                         </div>
                    
                     </div>

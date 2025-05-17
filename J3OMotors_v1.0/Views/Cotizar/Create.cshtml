@@ -1,7 +1,5 @@
 ﻿@model J3OMotors_v1._0.Models.Cotizar.CotizacionViewModel
 
-
-
 @{
     ViewData["Title"] = "Crear Cotización";
 }
@@ -105,7 +103,7 @@
                 </div>
 
                 <div class="d-grid mt-4">
-                    <button type="submit" class="custom-button">Guardar Cotización</button>
+                    <button asp-action="Create" asp-controller="Cotizar" type="submit" class="custom-button">Guardar Cotización</button>
                 </div>
             </form>
         </div>

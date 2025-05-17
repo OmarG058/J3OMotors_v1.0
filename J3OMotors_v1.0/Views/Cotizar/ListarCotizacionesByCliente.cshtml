@@ -1,0 +1,64 @@
+﻿@model List<J3OMotors_v1._0.Models.Cotizar.CotizacionDTO>
+
+
+@{
+    ViewData["Title"] = "Mis Cotizaciones";
+}
+
+<div class="container mt-5">
+    <div class="card shadow rounded-4 mx-auto" style="max-width: 900px;">
+        <div class="card-header bg-dark text-white rounded-top-4">
+            <h3 class="mb-0">Mis Cotizaciones</h3>
+        </div>
+        <div class="card-body">
+
+            @if (!Model.Any())
+            {
+                <div class="alert alert-info text-center">
+                    No tienes cotizaciones registradas.
+                </div>
+            }
+            else
+            {
+                <div class="accordion" id="cotizacionesAccordion">
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        var cot = Model[i];
+                        <div class="accordion-item mb-2 border rounded">
+                            <h2 class="accordion-header" id="heading-@i">
+                                <button class="accordion-button collapsed fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-@i" aria-expanded="false" aria-controls="collapse-@i">
+                                    Cotización #@cot.IdCotizacion - @cot.Fecha.ToString("dd/MM/yyyy")
+                                </button>
+                            </h2>
+                            <div id="collapse-@i" class="accordion-collapse collapse" aria-labelledby="heading-@i" data-bs-parent="#cotizacionesAccordion">
+                                <div class="accordion-body">
+
+                                    <p><strong>Auto:</strong> @cot.Auto?.Nombre (@(cot.Auto?.Precio?.ToString("C") ?? "$0.00"))</p>
+                                    <p><strong>Seguro:</strong> @cot.Seguro?.Nombre (@(cot.Seguro?.Precio?.ToString("C") ?? "$0.00"))</p>
+
+                                    <p><strong>Asiento:</strong> @cot.Asiento?.Nombre @cot.Asiento?.Tipo (@(cot.Asiento?.Precio?.ToString("C") ?? "$0.00"))</p>
+                                    <p><strong>Color:</strong> @cot.Color?.Nombre @cot.Color?.Tipo (@(cot.Color?.Precio?.ToString("C") ?? "$0.00"))</p>
+                                    <p><strong>Rin:</strong> @cot.Rin?.Nombre @cot.Rin?.Tipo (@(cot.Rin?.Precio?.ToString("C") ?? "$0.00"))</p>
+
+                                    <p><strong>Tipo de Pago:</strong> @cot.TipoPago</p>
+                                    @if (cot.TipoPago == "Credito")
+                                    {
+                                        <p><strong>Plazo:</strong> @cot.PlazoMeses meses</p>
+                                        <p><strong>Mensualidad:</strong> @(cot.Mensualidad?.ToString("C") ?? "$0.00")</p>
+                                    }
+
+                                    <hr />
+                                      <div class="" style="display:inline;">
+                                        <p class="fw-bold text-end">Total: @(cot.CostoTotal?.ToString("C") ?? "$0.00")</p>
+                                        <button class="custom-button">Proceder a Comprar</button>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

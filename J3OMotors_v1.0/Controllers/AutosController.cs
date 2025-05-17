@@ -100,9 +100,22 @@ namespace J3OMotors_v1._0.Controllers
 
 
         [HttpGet]
-        public IActionResult Edit()
+        public IActionResult Edit(string id)
         {
-            return View();
+            var cliente = _httpClient.CreateClient();
+            // Realizar la solicitud HTTP GET
+            var response = cliente.GetAsync($"https://localhost:7174/api/autos/{id}");
+            if (response.Result.IsSuccessStatusCode)
+            {
+                // Leer y deserializar los datos de la API
+                var jsonData = response.Result.Content.ReadAsStringAsync().Result;
+                var model = JsonConvert.DeserializeObject<AutosViewModel>(jsonData);
+
+                // Pasar los datos a la vista
+                return View(model);
+            }
+            return RedirectToAction("TablaAutos","Autos"); // Redirige al listado de autos si no se encuentra el auto
+
         }
 
 
@@ -176,9 +189,21 @@ namespace J3OMotors_v1._0.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete()
+        public IActionResult Delete(string id)
         {
-            return View();
+            var cliente = _httpClient.CreateClient();
+            // Realizar la solicitud HTTP GET
+            var response = cliente.GetAsync($"https://localhost:7174/api/autos/{id}");
+            if (response.Result.IsSuccessStatusCode)
+            {
+                // Leer y deserializar los datos de la API
+                var jsonData = response.Result.Content.ReadAsStringAsync().Result;
+                var model = JsonConvert.DeserializeObject<AutosViewModel>(jsonData);
+
+                // Pasar los datos a la vista
+                return View(model);
+            }
+            return RedirectToAction("TablaAutos", "Autos"); // Redirige al listado de autos si no se encuentra el auto
         }
 
 

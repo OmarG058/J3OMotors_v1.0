@@ -6,6 +6,7 @@ using System.Net.Http.Json;
 using J3OMotors_v1._0.Helpers.Rutas;
 using J3OMotors_v1._0.Models.Seguro;
 using J3OMotors_v1._0.Models.Autos;
+using J3OMotors_v1._0.Models.Usuario;
 
 
 namespace J3OMotors_v1._0.Controllers
@@ -69,9 +70,34 @@ namespace J3OMotors_v1._0.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit()
+        public async Task<IActionResult> Edit(int id)
         {
-            return View();
+            var cliente = _httpClient.CreateClient();   
+            if (id <= 0)
+            {
+                TempData["ErrorMessage"] = "ID inválido.";
+                return RedirectToAction("Index", "SeguroAuto");
+            }
+
+            // Llamada a la API para obtener el seguro por ID
+            var response = await cliente.GetAsync(Routes.SeguroPorId(id));
+
+            if (!response.IsSuccessStatusCode)
+            {
+                TempData["ErrorMessage"] = "No se pudieron obtener los datos del seguro.";
+                return RedirectToAction("Index", "SeguroAuto");
+            }
+
+            var seguro = await response.Content.ReadFromJsonAsync<SegurosViewModel>();
+
+            if (seguro == null)
+            {
+                TempData["ErrorMessage"] = "El seguro no existe.";
+                return RedirectToAction("Index", "Perfil");
+            }
+
+            return View(seguro);
+
         }
 
         [HttpPost]
@@ -93,9 +119,34 @@ namespace J3OMotors_v1._0.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete()
+        public async Task <IActionResult> Delete(int id)
         {
-            return View();
+
+            var cliente = _httpClient.CreateClient();
+            if (id <= 0)
+            {
+                TempData["ErrorMessage"] = "ID inválido.";
+                return RedirectToAction("Index", "SeguroAuto");
+            }
+
+            // Llamada a la API para obtener el seguro por ID
+            var response = await cliente.GetAsync(Routes.SeguroPorId(id));
+
+            if (!response.IsSuccessStatusCode)
+            {
+                TempData["ErrorMessage"] = "No se pudieron obtener los datos del seguro.";
+                return RedirectToAction("Index", "SeguroAuto");
+            }
+
+            var seguro = await response.Content.ReadFromJsonAsync<SegurosViewModel>();
+
+            if (seguro == null)
+            {
+                TempData["ErrorMessage"] = "El seguro no existe.";
+                return RedirectToAction("Index", "Perfil");
+            }
+
+            return View(seguro);
         }
 
         [HttpPost]

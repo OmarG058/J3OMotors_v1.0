@@ -123,7 +123,7 @@ namespace J3OMotors_v1._0.Controllers
             if (response.IsSuccessStatusCode)
             {
                 // Si guardó bien, rediriges a otra vista o acción (por ejemplo, a la lista de cotizaciones)
-                return RedirectToAction("Index", "Cotizaciones");
+                return RedirectToAction("ListarCotizacionesByCliente", "Cotizar");
             }
             else
             {
@@ -148,5 +148,41 @@ namespace J3OMotors_v1._0.Controllers
             ViewBag.TiposPago = new List<string> { "Contado", "Credito" };
             ViewBag.Plazos = new List<int> { 12, 24, 36 };
         }
+
+        //Metodo para lsitar las cotizacion de un cliente en espesifico
+        [HttpGet]
+        public async Task<IActionResult> ListarCotizacionesByCliente()
+        {
+            // Validar que esté logueado
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            int? idUsuario = HttpContext.Session.GetInt32("IdUsuario");
+
+            // Consultar cliente por ID de usuario
+            var clienteResponse = await _httpClient.GetAsync($"https://localhost:7174/Cliente/usuario/{idUsuario}");
+            if (!clienteResponse.IsSuccessStatusCode) return RedirectToAction("Create", "Cliente");
+
+            var content = await clienteResponse.Content.ReadAsStringAsync();
+            var cliente = JsonConvert.DeserializeObject<ClienteViewModel>(content);
+            int? idCliente = cliente?.IdCliente;
+
+            // Consultar cotizaciones
+            var cotizacionesResponse = await _httpClient.GetAsync($"https://localhost:7174/api/Cotizaciones/cliente/Dto/{idCliente}");
+
+            if (!cotizacionesResponse.IsSuccessStatusCode)
+            {
+                ModelState.AddModelError(string.Empty, "Error al obtener las cotizaciones.");
+                return View(new List<CotizacionDTO>());
+            }
+
+            var cotizaciones = await cotizacionesResponse.Content.ReadFromJsonAsync<List<CotizacionDTO>>();
+
+            return View("ListarCotizacionesByCliente", cotizaciones);
+
+        }
     }
+    
 }
