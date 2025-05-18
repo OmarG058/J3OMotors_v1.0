@@ -1,0 +1,30 @@
+﻿@model J3OMotors_v1._0.Models.Cotizar.CotizacionDTO
+
+@{
+      ViewData["Title"] = "Confirmar Compra";
+}
+
+<div class="container mt-5">
+    <div class="card shadow rounded-4 mx-auto" style="max-width: 800px;">
+        <div class="card-header bg-success text-white rounded-top-4">
+            <h4 class="mb-0">Confirmar Compra</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="CrearVenta" method="post">
+                <input type="hidden" name="IdCotizacion" value="@Model.IdCotizacion" />
+
+                <p><strong>Auto:</strong> @Model.Auto?.Nombre</p>
+                <p><strong>Seguro:</strong> @Model.Seguro?.Nombre</p>
+                <p><strong>Asiento:</strong> @Model.Asiento?.Nombre</p>
+                <p><strong>Color:</strong> @Model.Color?.Nombre</p>
+                <p><strong>Rin:</strong> @Model.Rin?.Nombre</p>
+                <p><strong>Tipo de Pago:</strong> @Model.TipoPago</p>
+                <p><strong>Total:</strong> @Model.CostoTotal?.ToString("C")</p>
+
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary">Confirmar Compra</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

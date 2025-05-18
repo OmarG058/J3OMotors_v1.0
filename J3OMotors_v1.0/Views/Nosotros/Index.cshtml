@@ -1,87 +1,208 @@
-﻿
-<link rel="stylesheet" href="~/css/css/cssNosotros/styleNosotros.css">
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J3OMOTORS - Nosotros</title>
+   
+    <style>
+        .hero-nosotros {
+            background: linear-gradient(rgba(0, 0,0), rgba(0, 0, 0, 0)), url('https://www.bbva.mx/content/dam/public-web/mexico/images/marquee-edufin/comprar-auto-carro-nuevo-pareja-header.im1729717106475im.jpg?imwidth=3200');
+            background-size: cover;
+            background-position: center;
+            min-height: 400px;
+        }
 
-<main class="CajaP">
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #000;
+            margin-bottom: 1rem;
+        }
 
-    <div class="contendor-presentacion">
-        <div class="presentacion" style="margin: 40px;">
-            <h3>J3OMOTORS GOMEZ PALACIO, CONCESIONARIA AUTOMOTRIZ COMPROMETIDA A LA CALIDA Y LA SATISFACCION DEL CLIENTE</h3>
+        .img-hover-zoom {
+            overflow: hidden;
+            border-radius: 8px;
+        }
 
-            <p>El 18 de noviembre de 2024 abrió oficialmente sus puertas al publico, dedicada desde entonces a ofrecer la mejor calidad a sus clientes, Líder actual en ventas en la laguna, J3OMOTORS cuenta con una amplia gama de vehiculos que ofrecen al mejor precio y a una excelente calidad</p>
+            .img-hover-zoom img {
+                transition: transform .5s ease;
+            }
+
+            .img-hover-zoom:hover img {
+                transform: scale(1.05);
+            }
+
+        .bg-orange {
+            background-color: #000;
+        }
+
+        .text-orange {
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-nosotros d-flex align-items-center text-white">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h1 class="display-4 fw-bold mb-4">J3OMOTORS GÓMEZ PALACIO</h1>
+                    <p class="lead mb-5">Concesionaria automotriz comprometida con la calidad y la satisfacción del cliente</p>
+                    <a href="#nuestra-historia" class="btn btn-warning btn-lg px-4">Conoce más</a>
+                </div>
+            </div>
         </div>
+    </section>
 
-    </div>
-
-    <div class="Contenedor">
-
-        <div class="contenedor-items">
-
-            <div class="contenedor-img">
-                <img src="../img/Nosotros/concesinaria.png" alt="">
-            </div>
-
-            <div class="contenedor-texto">
-                <h3>VENTA DE AUTOS DE AGENCIA</h3>
-                <p>Con excelente gama de opciones</p>
-            </div>
-
-        </div>
-
-        <div class="contenedor-items">
-
-            <div class="contenedor-texto">
-                <h3>SUCURSALES</h3>
-                <p>Cuenta con sucursales de facil acceso y atencion al cliente</p>
-            </div>
-
-            <div class="contenedor-img">
-                <img src="../img/Nosotros/concepequeña.png" alt="">
-            </div>
-
-        </div>
-
-        <div class="contenedor-items">
-
-            <div class="contenedor-img">
-                <img src="../img/Nosotros/Consesionari.png">
-            </div>
-
-            <div class="contenedor-texto">
-                <h3>ESTANDARES Y CERTIFICADOS</h3>
-                <p>Cuenta con autos estandarizados y certificados, ofreciendo una calidad espectacular</p>
-            </div>
-
-        </div>
-
-        <div class="contenedor-items">
-
-
-            <div class="contenedor-texto">
-                <h3>SERVICIO POSVENTA</h3>
-                <p>Ofrece un servicio posventa, donde se pueden realizar mantenimiento basico y preventivo</p>
-            </div>
-
-            <div class="contenedor-img">
-                <img src="../img/Nosotros/mecanico.png" alt="">
-            </div>
-
-
-        </div>
-
-        <!-- ESTO ES LO DEL SLIDER DE IMAGENES -->
-        <div>
-            <div>
-                <h3 class="texto-slide">J3O MOTORS COMPROMETIDOS CON EL CLIENTE</h3>
-                <div class="slider">
-                    <div class="slides">
-                        <img src="../img/Nosotros/2.avif" alt="Imagen 1">
-                        <img src="../img/Nosotros/3.avif" alt="Imagen 2">
-                        <img src="../img/Nosotros/5.avif" alt="Imagen 2">
-                        <img src="../img/Nosotros/6.avif" alt="Imagen 2">
+    <!-- Nuestra Historia -->
+    <section id="nuestra-historia" class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="fw-bold mb-4">Nuestra Historia</h2>
+                    <p class="lead">El 18 de noviembre de 2024 abrimos oficialmente nuestras puertas al público, dedicados desde entonces a ofrecer la mejor calidad a nuestros clientes.</p>
+                    <p>Líder actual en ventas en La Laguna, J3OMOTORS cuenta con una amplia gama de vehículos que ofrecemos al mejor precio y con excelente calidad.</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <i class="bi bi-award-fill text-orange fs-1 me-3"></i>
+                        <div>
+                            <h5 class="mb-0">Líder en ventas</h5>
+                            <p class="mb-0 text-muted">En la región de La Laguna</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="img-hover-zoom">
+                        <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                             alt="Concesionaria J3OMOTORS" class="img-fluid rounded shadow">
                     </div>
                 </div>
             </div>
-
         </div>
+    </section>
 
-</main>
+    <!-- Nuestros Servicios -->
+    <section class="py-5">
+        <div class="container " >
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Nuestros Servicios</h2>
+                <p class="lead text-muted">Ofrecemos soluciones integrales para tu experiencia automotriz</p>
+            </div>
+
+            <div class="row g-4" style="display:flex; flex-direction:row; justify-content:center;">
+                <!-- Servicio 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon">
+                                <i class="bi bi-car-front-fill"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Venta de Autos</h4>
+                            <p class="text-muted">Amplia gama de vehículos nuevos y seminuevos con las mejores condiciones.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Servicio 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon">
+                                <i class="bi bi-geo-alt-fill"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Sucursales</h4>
+                            <p class="text-muted">Ubicaciones estratégicas para tu comodidad y fácil acceso.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Servicio 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon">
+                                <i class="bi bi-patch-check-fill"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Certificaciones</h4>
+                            <p class="text-muted">Todos nuestros vehículos cuentan con estándares de calidad certificados.</p>
+                        </div>
+                    </div>
+                </div>
+
+              
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería -->
+    <section class="py-5 bg-orange text-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">J3OMOTORS Comprometidos con el Cliente</h2>
+                <p class="lead">Conoce nuestras instalaciones y equipo</p>
+            </div>
+
+            <div id="galeriaNosotros" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner rounded-3">
+                    <div class="carousel-item active" style="height:500px; width:100%;" >
+                        <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                             class="d-block w-100" alt="Instalaciones J3OMOTORS">
+                    </div>
+                    <div class="carousel-item" style="height:500px; width:100%;">
+                        <img src="https://www.javierortego.com/wp-content/uploads/2009/07/tipos-de-concesionarios.jpg"
+                             class="d-block w-100" alt="Vehículos J3OMOTORS">
+                    </div>
+                    <div class="carousel-item" style="height:500px; width:100%;">
+                        <img src="https://www.bbva.mx/content/dam/public-web/mexico/images/marquee-edufin/comprar-auto-carro-nuevo-pareja-header.im1729717106475im.jpg?imwidth=3200"
+                             class="d-block w-100" alt="Equipo J3OMOTORS">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#galeriaNosotros" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#galeriaNosotros" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valores -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Nuestros Valores</h2>
+                <p class="lead text-muted">Principios que nos guían cada día</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="p-4 text-center">
+                        <i class="bi bi-heart-fill text-danger fs-1 mb-3"></i>
+                        <h4 class="fw-bold">Pasión</h4>
+                        <p>Amamos lo que hacemos y eso se refleja en nuestro servicio al cliente.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 text-center">
+                        <i class="bi bi-shield-fill-check text-primary fs-1 mb-3"></i>
+                        <h4 class="fw-bold">Integridad</h4>
+                        <p>Actuamos con honestidad y transparencia en todas nuestras operaciones.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 text-center">
+                        <i class="bi bi-star-fill text-warning fs-1 mb-3"></i>
+                        <h4 class="fw-bold">Excelencia</h4>
+                        <p>Buscamos superar expectativas en cada detalle de nuestro servicio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+</html>

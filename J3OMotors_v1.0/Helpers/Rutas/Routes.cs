@@ -57,8 +57,12 @@
         //Autos
         public static string UrlBaseApiAutos { get; set; } = UrlBaseApi + "api/autos";
         //coizaciones
-        public static string UrlBaseApiCotizacion { get; set; } = UrlBaseApi + "api/cotizaciones";
+        public static string UrlBaseApiCotizacion { get; set; } = UrlBaseApi + "api/Cotizaciones";
         //Accesorios
         public static string UrlBaseApiAccesorios { get; set; } = UrlBaseApi + "api/accesorios";
+        //Ventas
+        public static string UrlBaseApiVentas { get; set; } = UrlBaseApi + "api/Ventas";
+        //Cotizacion DTo
+        public static string UrlCotizacionDTO => UrlBaseApi+"api/Cotizaciones/cliente/Dto/";
     }
 }

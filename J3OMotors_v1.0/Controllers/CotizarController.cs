@@ -36,7 +36,7 @@ namespace J3OMotors_v1._0.Controllers
             int? idUsuario = HttpContext.Session.GetInt32("IdUsuario");
 
             //hacemos consulta a la api para verificar que exista el cliente con su id de usuario
-            var clienteResponse = await _httpClient.GetAsync($"https://localhost:7174/Cliente/usuario/{idUsuario}");
+            var clienteResponse = await _httpClient.GetAsync(Routes.UrlBaseApiCliente + $"/Usuario/{idUsuario}");
 
             if (!clienteResponse.IsSuccessStatusCode) return RedirectToAction("Create", "Cliente");
 
@@ -162,7 +162,7 @@ namespace J3OMotors_v1._0.Controllers
             int? idUsuario = HttpContext.Session.GetInt32("IdUsuario");
 
             // Consultar cliente por ID de usuario
-            var clienteResponse = await _httpClient.GetAsync($"https://localhost:7174/Cliente/usuario/{idUsuario}");
+            var clienteResponse = await _httpClient.GetAsync(Routes.UrlBaseApiCliente + $"/Usuario/{idUsuario}");
             if (!clienteResponse.IsSuccessStatusCode) return RedirectToAction("Create", "Cliente");
 
             var content = await clienteResponse.Content.ReadAsStringAsync();
@@ -170,7 +170,7 @@ namespace J3OMotors_v1._0.Controllers
             int? idCliente = cliente?.IdCliente;
 
             // Consultar cotizaciones
-            var cotizacionesResponse = await _httpClient.GetAsync($"https://localhost:7174/api/Cotizaciones/cliente/Dto/{idCliente}");
+            var cotizacionesResponse = await _httpClient.GetAsync(Routes.UrlCotizacionDTO + idCliente);
 
             if (!cotizacionesResponse.IsSuccessStatusCode)
             {
@@ -183,6 +183,32 @@ namespace J3OMotors_v1._0.Controllers
             return View("ListarCotizacionesByCliente", cotizaciones);
 
         }
+
+        //Metodo para eliminar una cotizacion
+        [HttpPost]
+        public async Task<IActionResult> EliminarCotizacion(int idCotizacion)
+        {
+            // Validar que esté logueado
+            if (HttpContext.Session.GetInt32("IdUsuario") == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            // Llamar a la API para eliminar la cotización
+            var response = await _httpClient.DeleteAsync(Routes.UrlBaseApiCotizacion+$"/{idCotizacion}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("ListarCotizacionesByCliente");
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Error al eliminar la cotización.");
+                return RedirectToAction("ListarCotizacionesByCliente");
+            }
+        }
+
+
     }
-    
+
 }

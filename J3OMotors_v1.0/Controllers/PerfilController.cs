@@ -28,7 +28,7 @@ namespace J3OMotors_v1._0.Controllers
             // Llamar a la API para obtener los datos
             var usuario = await _httpClient.GetFromJsonAsync<UsuarioCreateViewModel>(Routes.UsuarioPorId((int) idUsuario));
 
-            var response = await _httpClient.GetAsync(Routes.BuscarClientePorIdUsuario((int)idUsuario));
+            var response = await _httpClient.GetAsync(Routes.UrlBaseApiCliente + $"/Usuario/{idUsuario}");
 
             ClienteViewModel cliente = null;
 

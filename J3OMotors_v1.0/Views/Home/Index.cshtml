@@ -3,306 +3,339 @@
 }
 
 
-<link rel="stylesheet" href="~/css/css/Styleindex.css">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J3OMOTORS - Concesionaria Oficial</title>
+  
+    <style>
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #ffffff;
+            --accent-color: #f8f9fa;
+        }
 
-<div style="margin:0;" class="slider">
-    <div class="slider--inner">
+        .hero-slider {
+            height: 80vh;
+            background-color: #000;
+        }
 
-        <img src="" alt="">
-        <img src="" alt="">
-        <img src="" alt="">
-        <img src="" alt="">
-        <img src="" alt="">
+            .hero-slider img {
+                object-fit: cover;
+                height: 100%;
+                width: 100%;
+            }
 
+        .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            border-radius: 5px;
+        }
+
+        .nav-icon-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+            .nav-icon-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+        .nav-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .vehicle-card {
+            transition: all 0.3s ease;
+            border: none;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+            .vehicle-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+
+            .vehicle-card img {
+                height: 200px;
+                object-fit: cover;
+                transition: transform 0.5s ease;
+            }
+
+            .vehicle-card:hover img {
+                transform: scale(1.05);
+            }
+
+        .news-card {
+            border: none;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+            .news-card:hover {
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .news-card img {
+                height: 200px;
+                object-fit: cover;
+            }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+            .section-title:after {
+                content: "";
+                position: absolute;
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80px;
+                height: 3px;
+                background-color: var(--primary-color);
+            }
+
+        .btn-outline-dark-custom {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 0.5rem 2rem;
+        }
+
+            .btn-outline-dark-custom:hover {
+                background-color: var(--primary-color);
+                color: var(--secondary-color);
+            }
+    </style>
+</head>
+<body>
+    <!-- Hero Slider -->
+    <div id="mainCarousel" class="carousel slide hero-slider" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner h-100">
+            <div class="carousel-item active h-100">
+                <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="d-block w-100" alt="J3OMOTORS">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2 class="display-4 fw-bold">J3OMOTORS GÓMEZ PALACIO</h2>
+                    <p class="lead">La mejor selección de vehículos nuevos y seminuevos</p>
+                    <a href="#" class="btn btn-light btn-lg mt-3">Ver inventario</a>
+                </div>
+            </div>
+            <div class="carousel-item h-100">
+                <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1583&q=80" class="d-block w-100" alt="Ofertas especiales">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2 class="display-4 fw-bold">OFERTAS ESPECIALES</h2>
+                    <p class="lead">Financiamiento preferencial y promociones exclusivas</p>
+                    <a href="#" class="btn btn-light btn-lg mt-3">Ver promociones</a>
+                </div>
+            </div>
+            <div class="carousel-item h-100">
+                <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" class="d-block w-100" alt="Servicio posventa">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2 class="display-4 fw-bold">SERVICIO POSVENTA</h2>
+                    <p class="lead">Los Mejores Autos</p>
+                    <a href="#" class="btn btn-light btn-lg mt-3">Agendar cita</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
     </div>
-    <button class="slider-btn prev">❮</button>
-    <button class="slider-btn next">❯</button>
-</div>
 
-<main>
-
-    <section class="nav-icon">
-
-        <div class="">
-
-            <div class="container-icon">
-
-                <a href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                         width="50"
-                         height="50"
-                         viewBox="0 0 24 24"
-                         fill="none"
-                         stroke="rgb(128,128,128)"
-                         stroke-width="2.5"
-                         stroke-linecap="round"
-                         stroke-linejoin="round">
-                        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                        <path d="M12 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                        <path d="M12 14l0 7" />
-                        <path d="M10 12l-6.75 -2" />
-                        <path d="M14 12l6.75 -2" />
-                    </svg>
-
-                    <p> Elige y maneja </p>
-                </a>
-
+    <!-- Icon Navigation -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card nav-icon-card h-100 text-center p-4">
+                        <div class="card-body">
+                            <i class="bi bi-car-front nav-icon"></i>
+                            <h4 class="fw-bold mb-3">Elige y Maneja</h4>
+                            <p class="mb-0">Descubre nuestra amplia selección de vehículos disponibles para entrega inmediata.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card nav-icon-card h-100 text-center p-4">
+                        <div class="card-body">
+                            <i class="bi bi-tags nav-icon"></i>
+                            <h4 class="fw-bold mb-3">Precios y Promociones</h4>
+                            <p class="mb-0">Las mejores ofertas y planes de financiamiento adaptados a tus necesidades.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card nav-icon-card h-100 text-center p-4">
+                        <div class="card-body">
+                            <i class="bi bi-file-text nav-icon"></i>
+                            <h4 class="fw-bold mb-3">Solicita una Cotización</h4>
+                            <p class="mb-0">Cotización personalizada sin compromiso para el vehículo de tus sueños.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-        </div>
-
-        <div class="">
-
-            <div class="container-icon">
-
-                <a href="#">
-                    <span>
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             width="50"
-                             height="50"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="rgb(128,128,128)"
-                             stroke-width="2.5"
-                             stroke-linecap="round"
-                             stroke-linejoin="round">
-                            <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
-                            <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
-                            <path d="M14 11h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" />
-                            <path d="M12 17v1m0 -8v1" />
-                        </svg>
-                    </span>
-                   <p> Precios y Promociones</p>
-                </a>
-
-            </div>
-
-
-
-        </div>
-
-        <div class="">
-
-            <div class="container-icon">
-                <a href="#">
-                    <span>
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             width="50"
-                             height="50"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="rgb(128,128,128)"
-                             stroke-width="2"
-                             stroke-linecap="round"
-                             stroke-linejoin="round">
-                            <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2" />
-                            <path d="M14 8h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5m2 0v1.5m0 -9v1.5" />
-                        </svg>
-                    </span>
-                    <p> Solicita una Cotizacion</p>
-                </a>
-            </div>
-
-
-        </div>
-
-    </section>
-
-    <section class="principal">
-
-        <div class="contenedor-grid">
-
-            <div class="contenedor-items">
-                <div>
-
-                    <img src="" alt="">
-
-                </div>
-
-                <h3>Nueva Equinox EV</h3>
-                <hr>
-                <p>Descubre la nueva Equinox EV, la SUV 100% eléctrica que desafía a las demás con su rango desde 513 km por carga completa, diseño innovador y tecnología regenerativa de energía Regen On Demand y One Pedal Driving.</p>
-            </div>
-
-            <div class="contenedor-items">
-                <div>
-                    <img src="" alt="">
-                </div>
-
-                <h3>Nueva Blazer EV</h3>
-                <hr>
-                <p>Descubre la nueva Equinox EV, la SUV  que desafía a las demás con su rango desde 513 km por carga completa, diseño innovador y tecnología regenerativa de energía Regen On Demand y One Pedal Driving.</p>
-            </div>
-
-            <div class="contenedor-items">
-                <div>
-                    <img src="" alt="">
-                </div>
-
-                <h3>Colorado</h3>
-                <hr>
-                <p>
-                    La nueva Chevrolet Colorado ZR2 es la máxima expresión de Off-Road
-                    con capacidades todo terreno únicas en su segmento
-                </p>
-            </div>
-
-            <div class="contenedor-items">
-                <div>
-                    <img src="" alt="">
-
-                </div>
-
-                <h3>Mazda CX-90</h3>
-                <hr>
-                <p>nueva SUV está construida sobre la exclusiva plataforma LARGE de Mazda, la cual cuenta con un diseño longitudinal de inclinación en las ruedas traseras y motor delantero que mejora el rendimiento</p>
-            </div>
-
-            <div class="contenedor-items">
-                <div>
-                    <img src="" alt="">
-
-                </div>
-
-
-                <h3>Nissan Sentra </h3>
-                <hr>
-                <p>El sedán más tecnológico de su segmento. Descubre cada una de sus tecnologías y ve un paso adelante.</p>
-
-            </div>
-
-            <div class="contenedor-items">
-
-                <div>
-                    <img src="" alt="">
-
-                </div>
-
-                <h3>La mejor comodidad </h3>
-                <hr>
-                <p>Transpórtate a otros mundos con soluciones a tu medida.</p>
-
-            </div>
-
-        </div>
-
-
-    </section>
-
-    <section class="noticias">
-
-        <div class="titulo-noticia">
-            <h2>Últimas Noticias del Mundo Automotriz</h2>
-        </div>
-
-        <div class="contenedor-noticias">
-
-            <article>
-
-                <div class="contenedor-img">
-                    <a href=""> <img src="" alt=""></a>
-                </div>
-
-                <div class="detalles">
-                    <a href="">
-                        <h3>los Autos con mejor con sumo de gasolina</h3>
-                        <p>En esta nota te mostraremos una lista de algunos autos  con mejor consumo de combustible.</p>
-                    </a>
-                    <a href="#">Leer más > </a>
-                </div>
-
-            </article>
-
-            <article>
-                <div class="contenedor-img">
-                    <a href=""> <img src="" alt=""></a>
-                </div>
-
-
-                <div class="detalles">
-                    <a href="">
-                        <h3>Cuanto cuesta mantener un vehiculo </h3>
-                        <p>Mantener un vehículo va mucho más allá de solo el costo inicial; implica una serie de gastos continuos que, a largo plazo..</p>
-                    </a>
-                    <a href="#">Leer más > </a>
-                </div>
-
-            </article>
-
-            <article>
-
-                <div class="contenedor-img">
-                    <a href=""> <img src="" alt=""></a>
-                </div>
-
-
-                <div class="detalles">
-                    <a href="">
-                        <h3>Como Elegir tu primer auto</h3>
-                        <p>El primer auto suele ser más que solo un medio de transporte; es una puerta a la independencia...</p>
-                    </a>
-                    <a href="#">Leer más > </a>
-                </div>
-
-            </article>
-
-            <article>
-
-                <div class="contenedor-img">
-                    <a href=""> <img src="" alt=""></a>
-
-                </div>
-
-                <div class="detalles">
-                    <a href="">
-                        <h3>Beneficios de contratar un seguro en mexico</h3>
-                        <p>Contar con un seguro de auto no solo es obligatorio en México, sino que también es fundamental... </p>
-                    </a>
-                    <a href="#">Leer más > </a>
-                </div>
-
-            </article>
-
-            <article>
-
-                <div class="contenedor-img">
-                    <a href=""> <img src="" alt=""></a>
-
-                </div>
-
-                <div class="detalles">
-                    <a href="">
-                        <h3>Auto nuevo o Seminuevo?</h3>
-                        <p>Comprar un vehículo es una decisión importante que involucra una inversión considerable no solo económica..</p>
-                    </a>
-                    <a href="#">Leer más > </a>
-                </div>
-
-            </article>
-
-            <article>
-
-                <div class="contenedor-img">
-                    <a href=""> <img src="" alt=""></a>
-
-                </div>
-
-                <div class="detalles">
-                    <a href="">
-                        <h3>Como inspeccionar un vehiculo</h3>
-                        <p>Realizar una inspección básica es un paso crucial tanto al momento de comprar un auto..</p>
-                    </a>
-                    <a href="#">Leer más > </a>
-                </div>
-
-            </article>
-
-            <div class="Contenedor-btn">
-                <button>Ver mas noticias..</button>
-            </div>
-
         </div>
     </section>
-</main>
+
+    <!-- Featured Vehicles -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5 section-title">VEHÍCULOS DESTACADOS</h2>
+
+            <div class="row g-4">
+                <!-- Vehicle 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card vehicle-card">
+                        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Nueva Equinox EV">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Nueva Equinox EV</h5>
+                            <hr>
+                            <p class="card-text">Descubre la nueva Equinox EV, la SUV 100% eléctrica que desafía a las demás con su rango desde 513 km por carga completa, diseño innovador y tecnología regenerativa de energía.</p>
+                            <a href="#" class="btn btn-outline-dark-custom">Más información</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vehicle 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card vehicle-card">
+                        <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Nueva Blazer EV">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Nueva Blazer EV</h5>
+                            <hr>
+                            <p class="card-text">La SUV que desafía a las demás con su rango desde 513 km por carga completa, diseño innovador y tecnología regenerativa de energía Regen On Demand y One Pedal Driving.</p>
+                            <a href="#" class="btn btn-outline-dark-custom">Más información</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vehicle 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card vehicle-card">
+                        <img src="https://images.unsplash.com/photo-1494905998402-395d579af36f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Colorado">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Colorado</h5>
+                            <hr>
+                            <p class="card-text">La nueva Chevrolet Colorado ZR2 es la máxima expresión de Off-Road con capacidades todo terreno únicas en su segmento.</p>
+                            <a href="#" class="btn btn-outline-dark-custom">Más información</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vehicle 4 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card vehicle-card">
+                        <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Mazda CX-90">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Mazda CX-90</h5>
+                            <hr>
+                            <p class="card-text">Nueva SUV construida sobre la exclusiva plataforma LARGE de Mazda, con diseño longitudinal que mejora el rendimiento.</p>
+                            <a href="#" class="btn btn-outline-dark-custom">Más información</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vehicle 5 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card vehicle-card">
+                        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Nissan Sentra">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Nissan Sentra</h5>
+                            <hr>
+                            <p class="card-text">El sedán más tecnológico de su segmento. Descubre cada una de sus tecnologías y ve un paso adelante.</p>
+                            <a href="#" class="btn btn-outline-dark-custom">Más información</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vehicle 6 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card vehicle-card">
+                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="La mejor comodidad">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">La mejor comodidad</h5>
+                            <hr>
+                            <p class="card-text">Transpórtate a otros mundos con soluciones a tu medida.</p>
+                            <a href="#" class="btn btn-outline-dark-custom">Más información</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5 section-title">ÚLTIMAS NOTICIAS DEL MUNDO AUTOMOTRIZ</h2>
+
+            <div class="row g-4">
+                <!-- News 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card news-card">
+                        <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" class="card-img-top" alt="Autos con mejor consumo">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Los autos con mejor consumo de gasolina</h5>
+                            <p class="card-text">En esta nota te mostraremos una lista de algunos autos con mejor consumo de combustible.</p>
+                            <a href="#" class="btn btn-link text-dark p-0">Leer más <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card news-card">
+                        <img src="https://images.unsplash.com/photo-1489824904134-891ab64532f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1631&q=80" class="card-img-top" alt="Mantenimiento de vehículo">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Cuánto cuesta mantener un vehículo</h5>
+                            <p class="card-text">Mantener un vehículo va mucho más allá de solo el costo inicial; implica una serie de gastos continuos.</p>
+                            <a href="#" class="btn btn-link text-dark p-0">Leer más <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card news-card">
+                        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1583&q=80" class="card-img-top" alt="Primer auto">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Cómo elegir tu primer auto</h5>
+                            <p class="card-text">El primer auto suele ser más que solo un medio de transporte; es una puerta a la independencia.</p>
+                            <a href="#" class="btn btn-link text-dark p-0">Leer más <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-outline-dark-custom">Ver más noticias</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
 
 

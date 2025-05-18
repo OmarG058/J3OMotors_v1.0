@@ -5,6 +5,22 @@
     ViewData["Title"] = "Mis Cotizaciones";
 }
 
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success text-center">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger text-center">@TempData["Error"]</div>
+}
+@if (TempData["Warning"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        @TempData["Warning"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
 <div class="container mt-5">
     <div class="card shadow rounded-4 mx-auto" style="max-width: 900px;">
         <div class="card-header bg-dark text-white rounded-top-4">
@@ -48,10 +64,16 @@
                                     }
 
                                     <hr />
-                                      <div class="" style="display:inline;">
-                                        <p class="fw-bold text-end">Total: @(cot.CostoTotal?.ToString("C") ?? "$0.00")</p>
-                                        <button class="custom-button">Proceder a Comprar</button>
-                                      </div>
+                                    <p class="fw-bold mb-0">Total: @(cot.CostoTotal?.ToString("C") ?? "$0.00")</p>
+                                    <button type="button" class="btn btn-success fs-4"  data-bs-toggle="modal" data-bs-target="#confirmarModal"
+                                            onclick="setIdCotizacion(@cot.IdCotizacion)">
+                                        <i  class="bi bi-currency-dollar text-white"></i>Generar Compra
+                                    </button>
+
+                                    <button type="button" class="btn btn-danger  fs-4" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
+                                            onclick="setIdToDelete(@cot.IdCotizacion)">
+                                        <i class="bi bi-trash"></i> Eliminar
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -62,3 +84,61 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Bootstrap -->
+<div class="modal fade" id="confirmarModal" tabindex="-1" aria-labelledby="confirmarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="formVenta" asp-action="CreateVenta" asp-controller="Venta" method="post">
+                <div class="modal-header bg-success">
+                    <h5 class="modal-title" id="confirmarModalLabel">Confirmar compra</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que deseas generar esta compra?
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" id="idCotizacionInput" name="idCotizacion" value="" />
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button asp-action="CreateVenta" asp-controller="Venta" type="submit" class="btn btn-success">Confirmar compra</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Confirmar Eliminación -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="confirmDeleteLabel">Confirmar Eliminación</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de que quieres eliminar esta cotización?
+            </div>
+            <div class="modal-footer">
+                <form id="formDelete" method="post" asp-action="EliminarCotizacion" asp-controller="Cotizacion">
+                    <input type="hidden" id="idCotizacionToDelete" name="idCotizacion" value="" />
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button asp-action="EliminarCotizacion" asp-controller="Cotizar" type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function setIdCotizacion(id) {
+        document.getElementById('idCotizacionInput').value = id;
+    }
+</script>
+
+@section Scripts {
+    <script>
+        function setIdToDelete(id) {
+            document.getElementById('idCotizacionToDelete').value = id;
+        }
+    </script>
+}
