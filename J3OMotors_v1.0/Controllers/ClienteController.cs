@@ -135,10 +135,18 @@ namespace J3OMotors_v1._0.Controllers
             ModelState.AddModelError(string.Empty, "Error al actualizar el cliente.");
             return View(model);
         }
+        //------------------------------------------------   ESTE ES TU ESPACIO JORGE PARA QUE HAGAS TUS CONTROLADORES --------------------
+        //IndexTablaClientes te muestra la tabla de clientes 
+        [HttpGet]
+        public async Task<IActionResult> IndexTablaClientes()
+        {
+            return View();
+        }
+
+        
+
+
     }
-
-
-
 
 }
 
