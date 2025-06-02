@@ -1,1 +1,137 @@
-﻿<h1>Esto es la vista de la tabla clientes</h1>
+﻿@model List<J3OMotors_v1._0.Models.Cliente.ClienteViewModel>
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<link href="~/css/MyCustoms.css" rel="stylesheet" />
+
+<section class="min-vh-100 d-flex align-items-center mt-5" style="background-color: #f8f9fa;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="card shadow-lg rounded-4 border-0">
+                    <div class="card-header bg-dark text-white text-center rounded-top-4 p-5">
+                        <h3 class="mb-0">Listado de Clientes</h3>
+                    </div>
+
+                    @* Mensajes de éxito o error *@
+                    @if (TempData["SuccessMessage"] != null && TempData["DesdeEdit"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible fade show mt-3 mx-3" role="alert">
+                            @TempData["SuccessMessage"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show mt-3 mx-3" role="alert">
+                            @TempData["Error"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+
+                    <div class="card-body p-5 bg-white rounded-bottom-4">
+
+                        <!-- Formulario de búsqueda por IdUsuario -->
+                        <form asp-action="BuscarClientePorIdUsuario" method="get" class="row g-3 mb-4 justify-content-center">
+                            <div class="col-md-4">
+                                <input type="number" name="idUsuario" class="form-control" placeholder="Buscar por Id Usuario" />
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-outline-primary w-100">Buscar</button>
+                            </div>
+                        </form>
+
+                        <!-- Mostrar cliente encontrado por IdUsuario -->
+                        @if (ViewBag.ClienteBuscado != null)
+                        {
+                            var cliente = (J3OMotors_v1._0.Models.Cliente.ClienteViewModel)ViewBag.ClienteBuscado;
+                            <div class="alert alert-info mb-4">
+                                <h5>Cliente encontrado por IdUsuario:</h5>
+                                <p><strong>Nombre:</strong> @cliente.Nombre @cliente.Apellidos</p>
+                                <p><strong>Teléfono:</strong> @cliente.Telefono</p>
+                                <p><strong>CURP:</strong> @cliente.Curp</p>
+                                <p><strong>RFC:</strong> @cliente.Rfc</p>
+                                <p><strong>Dirección:</strong> @cliente.Calle, @cliente.Colonia, @cliente.Ciudad, @cliente.Estado, CP @cliente.CodigoPostal</p>
+                                <p><strong>ID Usuario:</strong> @cliente.IdUsuario</p>
+                            </div>
+                        }
+
+                        <!-- Formulario de búsqueda por Nombre y Apellidos -->
+                        <form asp-action="BuscarClientePorNombreYApellido" method="get" class="row g-3 mb-4 justify-content-center">
+                            <div class="col-md-4">
+                                <input type="text" name="nombre" class="form-control" placeholder="Nombre" />
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" name="apellidos" class="form-control" placeholder="Apellidos" />
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-outline-primary w-100">Buscar</button>
+                            </div>
+                            <div class="col-md-2">
+                                <a asp-action="IndexTablaClientes" class="btn btn-outline-secondary w-100">Reiniciar</a>
+                            </div>
+                        </form>
+
+                        <!-- Tabla de clientes -->
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover text-center align-middle">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Apellidos</th>
+                                        <th>Teléfono</th>
+                                        <th>CURP</th>
+                                        <th>RFC</th>
+                                        <th>Colonia</th>
+                                        <th>Calle</th>
+                                        <th>Ciudad</th>
+                                        <th>Estado</th>
+                                        <th>Código Postal</th>
+                                        <th>ID Usuario</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null && Model.Any())
+                                    {
+                                        foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@item.Nombre</td>
+                                                <td>@item.Apellidos</td>
+                                                <td>@item.Telefono</td>
+                                                <td>@item.Curp</td>
+                                                <td>@item.Rfc</td>
+                                                <td>@item.Colonia</td>
+                                                <td>@item.Calle</td>
+                                                <td>@item.Ciudad</td>
+                                                <td>@item.Estado</td>
+                                                <td>@item.CodigoPostal</td>
+                                                <td>@item.IdUsuario</td>
+                                                <td>
+                                                    <a asp-action="Edit" asp-route-id="@item.IdCliente" class="btn btn-sm btn-primary me-1 fs-4">Editar</a>
+                                                    <form asp-action="EliminarClientePorId" asp-route-id="@item.IdCliente" method="post" class="d-inline">
+                                                        <button type="submit" class="btn btn-sm btn-danger fs-4">Eliminar</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="12" class="text-muted text-center">No se encontraron clientes.</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

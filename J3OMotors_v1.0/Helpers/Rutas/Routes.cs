@@ -25,8 +25,9 @@
         }
         public static string BuscarClientePorIdUsuario(int idUsuario)
         {
-            return $"{UrlBaseApi}Cliente/usuario/{idUsuario}";
+            return $"{UrlBaseApiCliente}/usuario/{idUsuario}";
         }
+        public static string EliminarClientePorId(int id) => $"{UrlBaseApiCliente}/{id}";
 
         public static string ClientePorId(int id) => $"{UrlBaseApiCliente}/{id}";
 

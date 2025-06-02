@@ -1,0 +1,55 @@
+﻿@model J3OMotors_v1._0.Models.Cliente.ClienteViewModel
+
+@{
+    ViewData["Title"] = "Eliminar Cliente";
+}
+
+<link href="~/css/MyCustoms.css" rel="stylesheet" />
+
+<section class="min-vh-100 d-flex justify-content-center align-items-center bg-light py-5">
+    <div class="card shadow-lg p-4 w-100" style="max-width: 900px;">
+        <div class="card-header bg-danger text-white text-center rounded-top-4">
+            <h3 class="mb-0 p-3">¿Estás seguro de que deseas eliminar este cliente?</h3>
+        </div>
+
+        <div class="card-body bg-white">
+            <dl class="row">
+                <dt class="col-sm-4">Nombre:</dt>
+                <dd class="col-sm-8">@Model.Nombre</dd>
+
+                <dt class="col-sm-4">Apellidos:</dt>
+                <dd class="col-sm-8">@Model.Apellidos</dd>
+
+                <dt class="col-sm-4">Teléfono:</dt>
+                <dd class="col-sm-8">@Model.Telefono</dd>
+
+                <dt class="col-sm-4">CURP:</dt>
+                <dd class="col-sm-8">@Model.Curp</dd>
+
+                <dt class="col-sm-4">RFC:</dt>
+                <dd class="col-sm-8">@Model.Rfc</dd>
+
+                <dt class="col-sm-4">Calle:</dt>
+                <dd class="col-sm-8">@Model.Calle</dd>
+
+                <dt class="col-sm-4">Colonia:</dt>
+                <dd class="col-sm-8">@Model.Colonia</dd>
+
+                <dt class="col-sm-4">Ciudad:</dt>
+                <dd class="col-sm-8">@Model.Ciudad</dd>
+
+                <dt class="col-sm-4">Estado:</dt>
+                <dd class="col-sm-8">@Model.Estado</dd>
+
+                <dt class="col-sm-4">Código Postal:</dt>
+                <dd class="col-sm-8">@Model.CodigoPostal</dd>
+            </dl>
+
+            <form asp-action="EliminarClientePorId" asp-controller="Cliente" method="post" class="text-end mt-4">
+                <input type="hidden" asp-for="IdCliente" />
+                <button type="submit" class="btn btn-danger custom-button me-2">Eliminar</button>
+                <a asp-action="IndexTablaClientes" asp-controller="Cliente" class="btn btn-secondary custom-button">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</section>

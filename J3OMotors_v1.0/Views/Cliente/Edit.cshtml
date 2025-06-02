@@ -6,94 +6,91 @@
 
 <link href="~/css/MyCustoms.css" rel="stylesheet" />
 
-
-
-    <section class="min-vh-100 d-flex justify-content-center align-items-center bg-light py-5">
-        <div class="card shadow-lg p-4 w-100" style="max-width: 1200px;">
-            <div class="card-header bg-dark text-white text-center">
-                <h3 class="mb-0 p-4">Edita tu Informacion de Cliente</h3>
-            </div>
-
-            <div class="card-body" style="width:100%;">
-                <form asp-action="Create" method="post" novalidate>
-                    <input type="hidden" asp-for="IdUsuario" />
-                @Html.HiddenFor(model => model.IdCliente)
-                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
-
-                    <div class="row mb-5">
-                        <div class="col-md-6 form-floating">
-                        <input asp-for="Nombre" class=" custom-imput" placeholder="Nombre" />
-                           
-                            <span asp-validation-for="Nombre" class="text-danger small"></span>
-                        </div>
-                        <div class="col-md-6 form-floating">
-                        <input asp-for="Apellidos" class=" custom-imput" placeholder="Apellidos" />
-                            
-                            <span asp-validation-for="Apellidos" class="text-danger small"></span>
-                        </div>
-                    </div>
-
-                    <div class="row mb-5">
-                        <div class="col-md-6 form-floating">
-                        <input asp-for="Telefono" class=" custom-imput" placeholder="Teléfono" />
-                            
-                            <span asp-validation-for="Telefono" class="text-danger small"></span>
-                        </div>
-                        <div class="col-md-6 form-floating">
-                        <input asp-for="Curp" class=" custom-imput" placeholder="CURP" />
-                            
-                            <span asp-validation-for="Curp" class="text-danger small"></span>
-                        </div>
-                    </div>
-
-                    <div class="mb-5 form-floating">
-                    <input asp-for="Rfc" class=" custom-imput" placeholder="RFC" />
-                   
-                        <span asp-validation-for="Rfc" class="text-danger small"></span>
-                    </div>
-
-                    <h5 class="text-muted mt-4 mb-3">Dirección</h5>
-
-                    <div class="row mb-5">
-                        <div class="col-md-6 form-floating">
-                            <input asp-for="Calle" class=" custom-imput" placeholder="Calle" />
-                           
-                            <span asp-validation-for="Calle" class="text-danger small"></span>
-                        </div>
-                        <div class="col-md-6 form-floating">
-                        <input asp-for="Colonia" class=" custom-imput" placeholder="Colonia" />
-                     
-                            <span asp-validation-for="Colonia" class="text-danger small"></span>
-                        </div>
-                    </div>
-
-                    <div class="row mb-5">
-                        <div class="col-md-6 form-floating">
-                        <input asp-for="Ciudad" class=" custom-imput" placeholder="Ciudad" />
-                           
-                            <span asp-validation-for="Ciudad" class="text-danger small"></span>
-                        </div>
-                        <div class="col-md-6 form-floating">
-                        <input asp-for="Estado" class=" custom-imput" placeholder="Estado" />
-                            
-                            <span asp-validation-for="Estado" class="text-danger small"></span>
-                        </div>
-                    </div>
-
-                    <div class="form-floating mb-5">
-                    <input asp-for="CodigoPostal" class=" custom-imput" placeholder="Código Postal" />
-                        
-                        <span asp-validation-for="CodigoPostal" class="text-danger small"></span>
-                    </div>
-
-                    <div class="text-end">
-                        <button asp-action="Edit" asp-controller="Cliente" type="submit" class="custom-button">Guardar</button>
-                        <a asp-action="Index" asp-controller="Perfil" class="custom-button">Regresar</a>
-                    </div>
-                </form>
-            </div>
+<section class="min-vh-100 d-flex justify-content-center align-items-center bg-light py-5">
+    <div class="card shadow-lg p-4 w-100" style="max-width: 1200px;">
+        <div class="card-header bg-dark text-white text-center">
+            <h3 class="mb-0 p-4">Edita tu Informacion de Cliente</h3>
         </div>
-    </section>
+
+        <div class="card-body" style="width:100%;">
+
+            @* Mostrar mensaje de éxito *@
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success text-center">
+                    @TempData["SuccessMessage"]
+                </div>
+            }
+
+            <form asp-action="Edit" asp-controller="Cliente" method="post" novalidate>
+                <input type="hidden" asp-for="IdUsuario" />
+                @Html.HiddenFor(model => model.IdCliente)
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="row mb-5">
+                    <div class="col-md-6 form-floating">
+                        <input asp-for="Nombre" class="custom-imput" placeholder="Nombre" />
+                        <span asp-validation-for="Nombre" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6 form-floating">
+                        <input asp-for="Apellidos" class="custom-imput" placeholder="Apellidos" />
+                        <span asp-validation-for="Apellidos" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-5">
+                    <div class="col-md-6 form-floating">
+                        <input asp-for="Telefono" class="custom-imput" placeholder="Teléfono" />
+                        <span asp-validation-for="Telefono" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6 form-floating">
+                        <input asp-for="Curp" class="custom-imput" placeholder="CURP" />
+                        <span asp-validation-for="Curp" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="mb-5 form-floating">
+                    <input asp-for="Rfc" class="custom-imput" placeholder="RFC" />
+                    <span asp-validation-for="Rfc" class="text-danger small"></span>
+                </div>
+
+                <h5 class="text-muted mt-4 mb-3">Dirección</h5>
+
+                <div class="row mb-5">
+                    <div class="col-md-6 form-floating">
+                        <input asp-for="Calle" class="custom-imput" placeholder="Calle" />
+                        <span asp-validation-for="Calle" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6 form-floating">
+                        <input asp-for="Colonia" class="custom-imput" placeholder="Colonia" />
+                        <span asp-validation-for="Colonia" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-5">
+                    <div class="col-md-6 form-floating">
+                        <input asp-for="Ciudad" class="custom-imput" placeholder="Ciudad" />
+                        <span asp-validation-for="Ciudad" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6 form-floating">
+                        <input asp-for="Estado" class="custom-imput" placeholder="Estado" />
+                        <span asp-validation-for="Estado" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="form-floating mb-5">
+                    <input asp-for="CodigoPostal" class="custom-imput" placeholder="Código Postal" />
+                    <span asp-validation-for="CodigoPostal" class="text-danger small"></span>
+                </div>
+
+                <div class="text-end">
+                    <button type="submit" class="custom-button">Guardar</button>
+                    <a asp-action="IndexTablaClientes" asp-controller="Cliente" class="custom-button">Regresar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
 
 @section Scripts {
     @{
