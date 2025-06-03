@@ -1,8 +1,15 @@
-﻿@model J3OMotors_v1._0.Models.Usuario.UsuarioCreateViewModel
-
+﻿@using Microsoft.AspNetCore.Http
+@model J3OMotors_v1._0.Models.Usuario.UsuarioCreateViewModel
+@inject IHttpContextAccessor HttpContextAccessor
 @{
     ViewData["Title"] = "Create";
+
+    var correo = HttpContextAccessor.HttpContext.Session.GetString("Email");
+    var tipoUsuario = HttpContextAccessor.HttpContext.Session.GetInt32("TipoUsuario");
 }
+
+
+
 <link href="~/css/MyCustoms.css" rel="stylesheet" />
 
 <section class="min-vh-100 d-flex align-items-center justify-content-center bg-light">
@@ -39,15 +46,17 @@
                     
                     <span asp-validation-for="contrasenia" class="text-danger"></span>
                 </div>
-
-                <label class="custom-label">Tipo de Usuario</label>
-                <div class="form-floating mb-5">
+   
+                <label hidden class="custom-label">Tipo de Usuario</label>
+                <div hidden class="form-floating mb-5">
                     <select asp-for="idTipo" class=" custom-imput">
                         <option value="2">Cliente</option>
                     </select>
-                    
+
                     <span asp-validation-for="idTipo" class="text-danger"></span>
                 </div>
+
+                
 
                 <div class="d-grid mb-5">
                     <button type="submit" class="custom-button">Registrar</button>

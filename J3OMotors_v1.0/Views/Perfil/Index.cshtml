@@ -36,7 +36,7 @@
                 <p><strong>Correo:</strong> @Model.Usuario.correo</p>
                 <p><strong>Contraseña:</strong> *********</p>
                 <div class="text-center mt-3 p-3">
-                    <a asp-action="Edit" asp-controller="Usuario"  asp-route-id="@Model.Usuario.idUsuario" class="custom-button">Editar Usuario</a>
+                    <a asp-action="Edit" asp-controller="Usuario"  asp-route-id="@Model.Usuario.idUsuario" class="custom-button">Editar Mi Usuario</a>
                 </div>
             </div>
 
@@ -52,7 +52,7 @@
                 <p><strong>Dirección:</strong> @Model.Cliente.Calle, @Model.Cliente.Colonia, @Model.Cliente.Ciudad, @Model.Cliente.Estado</p>
                 <p><strong>Código Postal:</strong> @Model.Cliente.CodigoPostal</p>
                 <div class="text-center mt-3 p-3">
-                    <a asp-action="Edit" asp-controller="Cliente" asp-route-id="@Model.Cliente.IdCliente" class="custom-button">Editar Cliente</a>
+                    <a asp-action="Edit" asp-controller="Cliente" asp-route-id="@Model.Cliente.IdCliente" class="custom-button">Editar Mis datos de Cliente</a>
                 </div>
             </div>
         </div>

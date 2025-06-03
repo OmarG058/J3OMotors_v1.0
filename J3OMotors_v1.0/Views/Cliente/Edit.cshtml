@@ -1,7 +1,10 @@
 ﻿@model J3OMotors_v1._0.Models.Cliente.ClienteViewModel
+@inject IHttpContextAccessor HttpContextAccessor
 
 @{
     ViewData["Title"] = "Editar Cliente";
+    var correo = HttpContextAccessor.HttpContext.Session.GetString("Email");
+    var tipoUsuario = HttpContextAccessor.HttpContext.Session.GetInt32("TipoUsuario");
 }
 
 <link href="~/css/MyCustoms.css" rel="stylesheet" />
@@ -85,7 +88,15 @@
 
                 <div class="text-end">
                     <button type="submit" class="custom-button">Guardar</button>
-                    <a asp-action="IndexTablaClientes" asp-controller="Cliente" class="custom-button">Regresar</a>
+                    @if (tipoUsuario == 2)
+                    {
+                        <a asp-action="Index" asp-controller="Perfil" class="custom-button">Regresar</a>
+                    }
+                    @if(tipoUsuario == 1)
+                    {
+                        <a asp-action="IndexTablaClientes" asp-controller="Cliente" class="custom-button">Regresar</a>
+                    }
+
                 </div>
             </form>
         </div>
